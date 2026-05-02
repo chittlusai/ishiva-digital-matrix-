@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "c:\Users\chitt\.gemini\antigravity\scratch\lead-gen-frontend\app.py", line 304, in <module>
+    threading.Timer(1.5, lambda: webbrowser.open("http://127.0.0.1:5050")).start()
+    ^^^^^^^^^
+NameError: name 'threading' is not defined

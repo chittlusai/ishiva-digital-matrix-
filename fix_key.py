@@ -1,0 +1,22 @@
+import json
+import os
+
+key_content = {
+  "type": "service_account",
+  "project_id": "lead-matrix-pro",
+  "private_key_id": "d03c3a0ca1f985fb2531d185db5eaa3ab2579d15",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC8G4e7UpJdLHpl\n+arKyKbhEuqaaJGNNCMODei1QwQS71DjSGZcEIe3X6I5DwxqdPCZBzZaj84fsEwl\nbGz+C7Os0P7zuOtOrhgbp4e2t1CcWltlmy8FpmzIzSL9OSGKIsY9kIbOaSnu7EoX\nFdWrxSS1mCsROVD2na2lMDK9dNSjFr342m5mN+VJgTnRqNDW0krWztMSBCsNlKBN\nuA08ka2WvBGY2cjY1jQAdTE9sfJTYXdxMo5CfvAVc90OHl7deNumvJrqNYXVRTPh\nGO5nJ1DkgbW85YgAdqkcpsMxmugWxrP/kPAQwfoNdeNpfxOYn8deqqIiVzaFpYIN\n77E8g6ZhAgMBAAECggEAGNhKBSPS0Ruezvk65a263N9yvRIyp0PLnX+YzNgdIaMa\nO+rEGkTUqBOpiX/DVAw9+vhI5Y043FacuBSqEKPbB2hTRD2YVrwH0x89fZSYwQ3u\nJG1quIRSufLePDPfii8tn9QG+hxJvZTX9FSd9CIFxzZh+dRoLSqGVNsY2I0lyKRu\nWwL/78YngpedvCKn0Lk86PgZjrLMSyoKH8/Gt5U6XSqyMBMtw3iKLysH0wT5IMjD\nmHgNNx0rYB3A5vVTATXTty8pRsmEIcA3Tqjk7xOizhSG/GYlZCBDcu6tg9XE7Dqm\nfUCdGaQzbbqntEGIdxzPUTDDyzqWF7hDKSATfBSMQQKBgQDcSXrhNOMFrV/0KiSY\ntPe5YkX69uLq+8ilduSluk1LP225wx+m2ZzumLZfiJrjq7aH0NUDEJ6FVb2CmoBd\nsZoui9kB8uogzaX2kb8uSV8PP4xaPwBbmCLTNaUz5v+5BxpFhSbPMnZwgkDBSmAy\nmY5GwJTpmRKGY4dnDAdb7428IwKBgQDamoMw1kwj9wKBKpSqEq4oVwxRhEmexPOS\ncb3q1xbmStptwbGt3enX3l0iNWvfo1pc5g3g3klkrXX34xuUnaY4UEZ7c6m2Fime\nWUgix2gkQV67DOLBKTmV7RhCjx9rkkntD7wonAJHPS/EdepzbpZH5JbBpTwhoe39\noM5oV5tJqwKBgG5WN8A5t0SOtLMdsLr0Weh3Osobg0lj1/pY9Om1ySVZneIfw+jU\svAneaGcUMicp46boTYpytzKN2QFcyp63NlXntiFDZRkrS41jmbmxUBj+i7xw4Id\nT8Qu6JJ4r7nDvvr3WJsLkZuFAl5OnKR7mXIC4BOpYkgB7j5FHiKEeJ+1AoGAfPUR\nxNrajzxlLByA+m7PKrQHkJlD1APVD4MBArqMlnt3PIIZ5L8TKpgrOKC81wtzXeML\nT90AqxIUeuxRGbS8DTil8W9+NV2Z0LBMccT2nLLZSabl/3BnQHJVCcbyOPVYWLBD\n6Bq1mq85HN4idHVkZhgerPac1sTPW8mN80sQsx0CgYEAif/2NLGM9b3onv55Ib4E\nbAOrXYbhrOoJ55joS6DkSNghS18f44u5XMmfLKUdaE3fU3ECJrwdy71Ly6KxWuPx\nzPq6KdrdVrehnyBJST43fBvxzSElOHdbEfobmXyHy5aPcbM3eVnJGTOGm0nA4Jua\nZk42p6ki6NZmvhffg7LWq+0=\n-----END PRIVATE KEY-----\n",
+  "client_email": "lead-matrix-pro@lead-matrix-pro.iam.gserviceaccount.com",
+  "client_id": "103007856428868876604",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/lead-matrix-pro%40lead-matrix-pro.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
+
+os.makedirs('credentials', exist_ok=True)
+with open('credentials/sheets_key.json', 'w') as f:
+    json.dump(key_content, f, indent=2)
+
+print("Key successfully fixed and saved.")
