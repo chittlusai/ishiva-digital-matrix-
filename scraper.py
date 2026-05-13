@@ -76,6 +76,7 @@ class GoogleMapsScraper:
     def extract_business_details(self, location, category, country, limit=20):
         """Streaming generator that yields leads as they are found"""
         try:
+            yield {"status": f"Searching for {category} in {location}..."}
             self.search_google_maps(category, location)
             
             extracted_names = set()
@@ -92,6 +93,7 @@ class GoogleMapsScraper:
                     if listings: break
                 
                 if not listings:
+                    yield {"status": f"Scanning for results (attempt {scroll_attempts+1})..."}
                     time.sleep(2)
                     scroll_attempts += 1
                     continue
@@ -158,6 +160,7 @@ class GoogleMapsScraper:
                         lead['notes'] = ""
                         
                         found_count += 1
+                        yield {"status": f"Extracted {found_count}/{limit} leads..."}
                         yield lead
                     except:
                         if len(self.driver.window_handles) > 1:
@@ -170,9 +173,11 @@ class GoogleMapsScraper:
                     try:
                         feed = self.driver.find_element(By.CSS_SELECTOR, "div[role='feed']")
                         self.driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight", feed)
+                        yield {"status": f"Scrolling... found {found_count} leads so far"}
                         print(f"   Scrolled. Leads found: {found_count}")
                     except:
                         self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight)")
+                        yield {"status": f"Scrolling... found {found_count} leads so far"}
                     time.sleep(3)
                     scroll_attempts += 1
                 else: break

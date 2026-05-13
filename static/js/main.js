@@ -378,6 +378,11 @@ function initScraper() {
                 return;
             }
             
+            if(data.status) {
+                document.getElementById('progressStatus').innerText = data.status;
+                return;
+            }
+            
             // First real data, remove skeletons
             if(allLeads.length === 0) tbody.innerHTML = '';
             
