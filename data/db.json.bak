@@ -1,0 +1,2424 @@
+{
+  "leads": [
+    {
+      "business_name": "Kailash Parbat Vizag",
+      "category": "restaurants",
+      "location": "Andhra Pradesh",
+      "country": "India",
+      "date_scraped": "2026-05-13",
+      "phone": "07416482299",
+      "website": "N/A",
+      "email": "N/A",
+      "rating": "4.6",
+      "reviews": "1,504",
+      "hours": "N/A",
+      "has_website": "No",
+      "priority": "\ud83d\udd25 HIGH",
+      "lead_status": "New Lead",
+      "notes": "",
+      "lead_id": "6cb5b31e",
+      "agent": "Gowtham Vanapalli",
+      "client_status": "new",
+      "tasks": [
+        {
+          "step": 1,
+          "label": "First Contact Attempt",
+          "done": false
+        },
+        {
+          "step": 2,
+          "label": "Follow-up Call",
+          "done": false
+        },
+        {
+          "step": 3,
+          "label": "Send WhatsApp/Email",
+          "done": false
+        },
+        {
+          "step": 4,
+          "label": "Schedule Demo",
+          "done": false
+        },
+        {
+          "step": 5,
+          "label": "Present Proposal",
+          "done": false
+        },
+        {
+          "step": 6,
+          "label": "Client Decision",
+          "done": false
+        },
+        {
+          "step": 7,
+          "label": "Onboarding",
+          "done": false
+        }
+      ],
+      "action_history": []
+    },
+    {
+      "business_name": "Aha Yemi Ruchulu The Kitchen",
+      "category": "restaurants",
+      "location": "Andhra Pradesh",
+      "country": "India",
+      "date_scraped": "2026-05-13",
+      "phone": "07331144804",
+      "website": "N/A",
+      "email": "N/A",
+      "rating": "4.6",
+      "reviews": "4,141",
+      "hours": "Open \u00b7 Closes",
+      "has_website": "No",
+      "priority": "\ud83d\udd25 HIGH",
+      "lead_status": "New Lead",
+      "notes": "",
+      "lead_id": "e7594bca",
+      "agent": "Gowtham Vanapalli",
+      "client_status": "new",
+      "tasks": [
+        {
+          "step": 1,
+          "label": "First Contact Attempt",
+          "done": false
+        },
+        {
+          "step": 2,
+          "label": "Follow-up Call",
+          "done": false
+        },
+        {
+          "step": 3,
+          "label": "Send WhatsApp/Email",
+          "done": false
+        },
+        {
+          "step": 4,
+          "label": "Schedule Demo",
+          "done": false
+        },
+        {
+          "step": 5,
+          "label": "Present Proposal",
+          "done": false
+        },
+        {
+          "step": 6,
+          "label": "Client Decision",
+          "done": false
+        },
+        {
+          "step": 7,
+          "label": "Onboarding",
+          "done": false
+        }
+      ],
+      "action_history": []
+    },
+    {
+      "business_name": "Athidhi Devo Bhava Restaurant",
+      "category": "restaurants",
+      "location": "Andhra Pradesh",
+      "country": "India",
+      "date_scraped": "2026-05-13",
+      "phone": "08106896789",
+      "website": "N/A",
+      "email": "N/A",
+      "rating": "4.1",
+      "reviews": "2,017",
+      "hours": "Open \u00b7 Closes",
+      "has_website": "No",
+      "priority": "\ud83d\udd25 HIGH",
+      "lead_status": "New Lead",
+      "notes": "",
+      "lead_id": "2e37b839",
+      "agent": "Gowtham Vanapalli",
+      "client_status": "new",
+      "tasks": [
+        {
+          "step": 1,
+          "label": "First Contact Attempt",
+          "done": false
+        },
+        {
+          "step": 2,
+          "label": "Follow-up Call",
+          "done": false
+        },
+        {
+          "step": 3,
+          "label": "Send WhatsApp/Email",
+          "done": false
+        },
+        {
+          "step": 4,
+          "label": "Schedule Demo",
+          "done": false
+        },
+        {
+          "step": 5,
+          "label": "Present Proposal",
+          "done": false
+        },
+        {
+          "step": 6,
+          "label": "Client Decision",
+          "done": false
+        },
+        {
+          "step": 7,
+          "label": "Onboarding",
+          "done": false
+        }
+      ],
+      "action_history": []
+    },
+    {
+      "business_name": "My Restaurant",
+      "category": "restaurants",
+      "location": "Andhra Pradesh",
+      "country": "India",
+      "date_scraped": "2026-05-13",
+      "phone": "08886533555",
+      "website": "N/A",
+      "email": "N/A",
+      "rating": "4.0",
+      "reviews": "9,420",
+      "hours": "Open \u00b7 Closes",
+      "has_website": "No",
+      "priority": "\ud83d\udd25 HIGH",
+      "lead_status": "New Lead",
+      "notes": "",
+      "lead_id": "9e617864",
+      "agent": "Gowtham Vanapalli",
+      "client_status": "new",
+      "tasks": [
+        {
+          "step": 1,
+          "label": "First Contact Attempt",
+          "done": false
+        },
+        {
+          "step": 2,
+          "label": "Follow-up Call",
+          "done": false
+        },
+        {
+          "step": 3,
+          "label": "Send WhatsApp/Email",
+          "done": false
+        },
+        {
+          "step": 4,
+          "label": "Schedule Demo",
+          "done": false
+        },
+        {
+          "step": 5,
+          "label": "Present Proposal",
+          "done": false
+        },
+        {
+          "step": 6,
+          "label": "Client Decision",
+          "done": false
+        },
+        {
+          "step": 7,
+          "label": "Onboarding",
+          "done": false
+        }
+      ],
+      "action_history": []
+    },
+    {
+      "business_name": "Godavari Restaurant",
+      "category": "restaurants",
+      "location": "Andhra Pradesh",
+      "country": "India",
+      "date_scraped": "2026-05-13",
+      "phone": "07893723450",
+      "website": "N/A",
+      "email": "N/A",
+      "rating": "4.1",
+      "reviews": "1,548",
+      "hours": "Closed \u00b7 Opens",
+      "has_website": "No",
+      "priority": "\ud83d\udd25 HIGH",
+      "lead_status": "New Lead",
+      "notes": "",
+      "lead_id": "4fc68e2f",
+      "agent": "Gowtham Vanapalli",
+      "client_status": "new",
+      "tasks": [
+        {
+          "step": 1,
+          "label": "First Contact Attempt",
+          "done": false
+        },
+        {
+          "step": 2,
+          "label": "Follow-up Call",
+          "done": false
+        },
+        {
+          "step": 3,
+          "label": "Send WhatsApp/Email",
+          "done": false
+        },
+        {
+          "step": 4,
+          "label": "Schedule Demo",
+          "done": false
+        },
+        {
+          "step": 5,
+          "label": "Present Proposal",
+          "done": false
+        },
+        {
+          "step": 6,
+          "label": "Client Decision",
+          "done": false
+        },
+        {
+          "step": 7,
+          "label": "Onboarding",
+          "done": false
+        }
+      ],
+      "action_history": []
+    },
+    {
+      "business_name": "The Vizag Drive In",
+      "category": "restaurants",
+      "location": "Andhra Pradesh",
+      "country": "India",
+      "date_scraped": "2026-05-13",
+      "phone": "06309596884",
+      "website": "N/A",
+      "email": "N/A",
+      "rating": "4.0",
+      "reviews": "7,261",
+      "hours": "Open \u00b7 Closes",
+      "has_website": "No",
+      "priority": "\ud83d\udd25 HIGH",
+      "lead_status": "New Lead",
+      "notes": "",
+      "lead_id": "018a9bb1",
+      "agent": "Gowtham Vanapalli",
+      "client_status": "new",
+      "tasks": [
+        {
+          "step": 1,
+          "label": "First Contact Attempt",
+          "done": false
+        },
+        {
+          "step": 2,
+          "label": "Follow-up Call",
+          "done": false
+        },
+        {
+          "step": 3,
+          "label": "Send WhatsApp/Email",
+          "done": false
+        },
+        {
+          "step": 4,
+          "label": "Schedule Demo",
+          "done": false
+        },
+        {
+          "step": 5,
+          "label": "Present Proposal",
+          "done": false
+        },
+        {
+          "step": 6,
+          "label": "Client Decision",
+          "done": false
+        },
+        {
+          "step": 7,
+          "label": "Onboarding",
+          "done": false
+        }
+      ],
+      "action_history": []
+    },
+    {
+      "business_name": "Meating Family Restaurant",
+      "category": "restaurants",
+      "location": "Andhra Pradesh",
+      "country": "India",
+      "date_scraped": "2026-05-13",
+      "phone": "08179639393",
+      "website": "N/A",
+      "email": "N/A",
+      "rating": "4.7",
+      "reviews": "1,365",
+      "hours": "Open \u00b7 Closes",
+      "has_website": "No",
+      "priority": "\ud83d\udd25 HIGH",
+      "lead_status": "New Lead",
+      "notes": "",
+      "lead_id": "1f5acb9a",
+      "agent": "Gowtham Vanapalli",
+      "client_status": "new",
+      "tasks": [
+        {
+          "step": 1,
+          "label": "First Contact Attempt",
+          "done": false
+        },
+        {
+          "step": 2,
+          "label": "Follow-up Call",
+          "done": false
+        },
+        {
+          "step": 3,
+          "label": "Send WhatsApp/Email",
+          "done": false
+        },
+        {
+          "step": 4,
+          "label": "Schedule Demo",
+          "done": false
+        },
+        {
+          "step": 5,
+          "label": "Present Proposal",
+          "done": false
+        },
+        {
+          "step": 6,
+          "label": "Client Decision",
+          "done": false
+        },
+        {
+          "step": 7,
+          "label": "Onboarding",
+          "done": false
+        }
+      ],
+      "action_history": []
+    },
+    {
+      "business_name": "Sketch Family Restaurant & Rooms",
+      "category": "restaurants",
+      "location": "Andhra Pradesh",
+      "country": "India",
+      "date_scraped": "2026-05-13",
+      "phone": "09247688721",
+      "website": "N/A",
+      "email": "N/A",
+      "rating": "4.6",
+      "reviews": "164",
+      "hours": "Open \u00b7 Closes",
+      "has_website": "No",
+      "priority": "\ud83d\udd25 HIGH",
+      "lead_status": "New Lead",
+      "notes": "",
+      "lead_id": "2e7e2d9c",
+      "agent": "Gowtham Vanapalli",
+      "client_status": "new",
+      "tasks": [
+        {
+          "step": 1,
+          "label": "First Contact Attempt",
+          "done": false
+        },
+        {
+          "step": 2,
+          "label": "Follow-up Call",
+          "done": false
+        },
+        {
+          "step": 3,
+          "label": "Send WhatsApp/Email",
+          "done": false
+        },
+        {
+          "step": 4,
+          "label": "Schedule Demo",
+          "done": false
+        },
+        {
+          "step": 5,
+          "label": "Present Proposal",
+          "done": false
+        },
+        {
+          "step": 6,
+          "label": "Client Decision",
+          "done": false
+        },
+        {
+          "step": 7,
+          "label": "Onboarding",
+          "done": false
+        }
+      ],
+      "action_history": []
+    },
+    {
+      "business_name": "ASHA FAMILY RESTAURANT",
+      "category": "restaurants",
+      "location": "Andhra Pradesh",
+      "country": "India",
+      "date_scraped": "2026-05-13",
+      "phone": "09963168118",
+      "website": "N/A",
+      "email": "N/A",
+      "rating": "4.0",
+      "reviews": "54",
+      "hours": "Open \u00b7 Closes",
+      "has_website": "No",
+      "priority": "\ud83d\udd25 HIGH",
+      "lead_status": "New Lead",
+      "notes": "",
+      "lead_id": "e674e20e",
+      "agent": "Gowtham Vanapalli",
+      "client_status": "new",
+      "tasks": [
+        {
+          "step": 1,
+          "label": "First Contact Attempt",
+          "done": false
+        },
+        {
+          "step": 2,
+          "label": "Follow-up Call",
+          "done": false
+        },
+        {
+          "step": 3,
+          "label": "Send WhatsApp/Email",
+          "done": false
+        },
+        {
+          "step": 4,
+          "label": "Schedule Demo",
+          "done": false
+        },
+        {
+          "step": 5,
+          "label": "Present Proposal",
+          "done": false
+        },
+        {
+          "step": 6,
+          "label": "Client Decision",
+          "done": false
+        },
+        {
+          "step": 7,
+          "label": "Onboarding",
+          "done": false
+        }
+      ],
+      "action_history": []
+    },
+    {
+      "business_name": "Dine Destiny Fine Dining Restaurant",
+      "category": "restaurants",
+      "location": "Andhra Pradesh",
+      "country": "India",
+      "date_scraped": "2026-05-13",
+      "phone": "09522828289",
+      "website": "N/A",
+      "email": "N/A",
+      "rating": "4.0",
+      "reviews": "648",
+      "hours": "Open \u00b7 Closes",
+      "has_website": "No",
+      "priority": "\ud83d\udd25 HIGH",
+      "lead_status": "New Lead",
+      "notes": "",
+      "lead_id": "94325b98",
+      "agent": "Gowtham Vanapalli",
+      "client_status": "new",
+      "tasks": [
+        {
+          "step": 1,
+          "label": "First Contact Attempt",
+          "done": false
+        },
+        {
+          "step": 2,
+          "label": "Follow-up Call",
+          "done": false
+        },
+        {
+          "step": 3,
+          "label": "Send WhatsApp/Email",
+          "done": false
+        },
+        {
+          "step": 4,
+          "label": "Schedule Demo",
+          "done": false
+        },
+        {
+          "step": 5,
+          "label": "Present Proposal",
+          "done": false
+        },
+        {
+          "step": 6,
+          "label": "Client Decision",
+          "done": false
+        },
+        {
+          "step": 7,
+          "label": "Onboarding",
+          "done": false
+        }
+      ],
+      "action_history": []
+    },
+    {
+      "business_name": "The Pulao Hub",
+      "category": "restaurants",
+      "location": "Andhra Pradesh",
+      "country": "India",
+      "date_scraped": "2026-05-13",
+      "phone": "09642891891",
+      "website": "N/A",
+      "email": "N/A",
+      "rating": "4.8",
+      "reviews": "86",
+      "hours": "Open \u00b7 Closes",
+      "has_website": "No",
+      "priority": "\ud83d\udd25 HIGH",
+      "lead_status": "New Lead",
+      "notes": "",
+      "lead_id": "14dcacbb",
+      "agent": "Gowtham Vanapalli",
+      "client_status": "new",
+      "tasks": [
+        {
+          "step": 1,
+          "label": "First Contact Attempt",
+          "done": false
+        },
+        {
+          "step": 2,
+          "label": "Follow-up Call",
+          "done": false
+        },
+        {
+          "step": 3,
+          "label": "Send WhatsApp/Email",
+          "done": false
+        },
+        {
+          "step": 4,
+          "label": "Schedule Demo",
+          "done": false
+        },
+        {
+          "step": 5,
+          "label": "Present Proposal",
+          "done": false
+        },
+        {
+          "step": 6,
+          "label": "Client Decision",
+          "done": false
+        },
+        {
+          "step": 7,
+          "label": "Onboarding",
+          "done": false
+        }
+      ],
+      "action_history": []
+    },
+    {
+      "business_name": "Mr.Kitchen Dining",
+      "category": "restaurants",
+      "location": "Andhra Pradesh",
+      "country": "India",
+      "date_scraped": "2026-05-13",
+      "phone": "09676143787",
+      "website": "N/A",
+      "email": "N/A",
+      "rating": "4.4",
+      "reviews": "483",
+      "hours": "Open \u00b7 Closes",
+      "has_website": "No",
+      "priority": "\ud83d\udd25 HIGH",
+      "lead_status": "New Lead",
+      "notes": "",
+      "lead_id": "ccdd09fe",
+      "agent": "Gowtham Vanapalli",
+      "client_status": "new",
+      "tasks": [
+        {
+          "step": 1,
+          "label": "First Contact Attempt",
+          "done": false
+        },
+        {
+          "step": 2,
+          "label": "Follow-up Call",
+          "done": false
+        },
+        {
+          "step": 3,
+          "label": "Send WhatsApp/Email",
+          "done": false
+        },
+        {
+          "step": 4,
+          "label": "Schedule Demo",
+          "done": false
+        },
+        {
+          "step": 5,
+          "label": "Present Proposal",
+          "done": false
+        },
+        {
+          "step": 6,
+          "label": "Client Decision",
+          "done": false
+        },
+        {
+          "step": 7,
+          "label": "Onboarding",
+          "done": false
+        }
+      ],
+      "action_history": []
+    },
+    {
+      "business_name": "RED PEPPER FAMILY RESTAURANT",
+      "category": "restaurants",
+      "location": "Andhra Pradesh",
+      "country": "India",
+      "date_scraped": "2026-05-13",
+      "phone": "5 4 3 2 1 4.6 305",
+      "website": "N/A",
+      "email": "N/A",
+      "rating": "4.6",
+      "reviews": "305",
+      "hours": "Open \u00b7 Closes",
+      "has_website": "No",
+      "priority": "\ud83d\udd25 HIGH",
+      "lead_status": "New Lead",
+      "notes": "",
+      "lead_id": "a58f7b48",
+      "agent": "Gowtham Vanapalli",
+      "client_status": "new",
+      "tasks": [
+        {
+          "step": 1,
+          "label": "First Contact Attempt",
+          "done": false
+        },
+        {
+          "step": 2,
+          "label": "Follow-up Call",
+          "done": false
+        },
+        {
+          "step": 3,
+          "label": "Send WhatsApp/Email",
+          "done": false
+        },
+        {
+          "step": 4,
+          "label": "Schedule Demo",
+          "done": false
+        },
+        {
+          "step": 5,
+          "label": "Present Proposal",
+          "done": false
+        },
+        {
+          "step": 6,
+          "label": "Client Decision",
+          "done": false
+        },
+        {
+          "step": 7,
+          "label": "Onboarding",
+          "done": false
+        }
+      ],
+      "action_history": []
+    },
+    {
+      "business_name": "Paradise Biryani | Visakhapatnam",
+      "category": "restaurants",
+      "location": "Andhra Pradesh",
+      "country": "India",
+      "date_scraped": "2026-05-13",
+      "phone": "09110391524",
+      "website": "https://www.google.com/url?q=https://www.paradisefoodcourt.in/&opi=79508299&sa=U&ved=0ahUKEwjCzZubh7aUAxVDWHADHVxtBb0Q61gIGygQ&usg=AOvVaw3uH81kT-4k1-XjPJdg7L1q",
+      "email": "N/A",
+      "rating": "4.0",
+      "reviews": "13,199",
+      "hours": "Open \u00b7 Closes",
+      "has_website": "Yes",
+      "priority": "\ud83d\udfe1 MEDIUM",
+      "lead_status": "New Lead",
+      "notes": "",
+      "lead_id": "a335c30e",
+      "agent": "Gowtham Vanapalli",
+      "client_status": "new",
+      "tasks": [
+        {
+          "step": 1,
+          "label": "First Contact Attempt",
+          "done": false
+        },
+        {
+          "step": 2,
+          "label": "Follow-up Call",
+          "done": false
+        },
+        {
+          "step": 3,
+          "label": "Send WhatsApp/Email",
+          "done": false
+        },
+        {
+          "step": 4,
+          "label": "Schedule Demo",
+          "done": false
+        },
+        {
+          "step": 5,
+          "label": "Present Proposal",
+          "done": false
+        },
+        {
+          "step": 6,
+          "label": "Client Decision",
+          "done": false
+        },
+        {
+          "step": 7,
+          "label": "Onboarding",
+          "done": false
+        }
+      ],
+      "action_history": []
+    },
+    {
+      "business_name": "Sri Padmavathi Restaurant",
+      "category": "restaurants",
+      "location": "Andhra Pradesh",
+      "country": "India",
+      "date_scraped": "2026-05-13",
+      "phone": "09395125125",
+      "website": "N/A",
+      "email": "N/A",
+      "rating": "3.7",
+      "reviews": "313",
+      "hours": "Open \u00b7 Closes",
+      "has_website": "No",
+      "priority": "\ud83d\udd25 HIGH",
+      "lead_status": "New Lead",
+      "notes": "",
+      "lead_id": "3764747e",
+      "agent": "Gowtham Vanapalli",
+      "client_status": "new",
+      "tasks": [
+        {
+          "step": 1,
+          "label": "First Contact Attempt",
+          "done": false
+        },
+        {
+          "step": 2,
+          "label": "Follow-up Call",
+          "done": false
+        },
+        {
+          "step": 3,
+          "label": "Send WhatsApp/Email",
+          "done": false
+        },
+        {
+          "step": 4,
+          "label": "Schedule Demo",
+          "done": false
+        },
+        {
+          "step": 5,
+          "label": "Present Proposal",
+          "done": false
+        },
+        {
+          "step": 6,
+          "label": "Client Decision",
+          "done": false
+        },
+        {
+          "step": 7,
+          "label": "Onboarding",
+          "done": false
+        }
+      ],
+      "action_history": []
+    },
+    {
+      "business_name": "M/S Ravi\u2019s Kitchen ( Veg & Non-Veg Restaurant )",
+      "category": "restaurants",
+      "location": "Andhra Pradesh",
+      "country": "India",
+      "date_scraped": "2026-05-13",
+      "phone": "09848592345",
+      "website": "N/A",
+      "email": "N/A",
+      "rating": "3.8",
+      "reviews": "1,296",
+      "hours": "Open \u00b7 Closes",
+      "has_website": "No",
+      "priority": "\ud83d\udd25 HIGH",
+      "lead_status": "New Lead",
+      "notes": "",
+      "lead_id": "ce285748",
+      "agent": "Gowtham Vanapalli",
+      "client_status": "new",
+      "tasks": [
+        {
+          "step": 1,
+          "label": "First Contact Attempt",
+          "done": false
+        },
+        {
+          "step": 2,
+          "label": "Follow-up Call",
+          "done": false
+        },
+        {
+          "step": 3,
+          "label": "Send WhatsApp/Email",
+          "done": false
+        },
+        {
+          "step": 4,
+          "label": "Schedule Demo",
+          "done": false
+        },
+        {
+          "step": 5,
+          "label": "Present Proposal",
+          "done": false
+        },
+        {
+          "step": 6,
+          "label": "Client Decision",
+          "done": false
+        },
+        {
+          "step": 7,
+          "label": "Onboarding",
+          "done": false
+        }
+      ],
+      "action_history": []
+    },
+    {
+      "business_name": "The Spicy Venue Restaurant",
+      "category": "restaurants",
+      "location": "Andhra Pradesh",
+      "country": "India",
+      "date_scraped": "2026-05-13",
+      "phone": "09492655553",
+      "website": "https://www.google.com/url?q=http://www.thespicyvenue.in/&opi=79508299&sa=U&ved=0ahUKEwjD3Pehh7aUAxXQfGwGHaiWJPYQ61gIGygQ&usg=AOvVaw1VmEY3N77cwHBIn-di4igC",
+      "email": "N/A",
+      "rating": "4.1",
+      "reviews": "7,479",
+      "hours": "Open \u00b7 Closes",
+      "has_website": "Yes",
+      "priority": "\ud83d\udfe1 MEDIUM",
+      "lead_status": "New Lead",
+      "notes": "",
+      "lead_id": "cfe3514e",
+      "agent": "Gowtham Vanapalli",
+      "client_status": "new",
+      "tasks": [
+        {
+          "step": 1,
+          "label": "First Contact Attempt",
+          "done": false
+        },
+        {
+          "step": 2,
+          "label": "Follow-up Call",
+          "done": false
+        },
+        {
+          "step": 3,
+          "label": "Send WhatsApp/Email",
+          "done": false
+        },
+        {
+          "step": 4,
+          "label": "Schedule Demo",
+          "done": false
+        },
+        {
+          "step": 5,
+          "label": "Present Proposal",
+          "done": false
+        },
+        {
+          "step": 6,
+          "label": "Client Decision",
+          "done": false
+        },
+        {
+          "step": 7,
+          "label": "Onboarding",
+          "done": false
+        }
+      ],
+      "action_history": []
+    },
+    {
+      "business_name": "Varun's Eat Restaurant (Rushikonda, IT Sez, Hill - 2)",
+      "category": "restaurants",
+      "location": "Andhra Pradesh",
+      "country": "India",
+      "date_scraped": "2026-05-13",
+      "phone": "08142154888",
+      "website": "N/A",
+      "email": "N/A",
+      "rating": "4.4",
+      "reviews": "887",
+      "hours": "Open \u00b7 Closes",
+      "has_website": "No",
+      "priority": "\ud83d\udd25 HIGH",
+      "lead_status": "New Lead",
+      "notes": "",
+      "lead_id": "894830b8",
+      "agent": "Gowtham Vanapalli",
+      "client_status": "new",
+      "tasks": [
+        {
+          "step": 1,
+          "label": "First Contact Attempt",
+          "done": false
+        },
+        {
+          "step": 2,
+          "label": "Follow-up Call",
+          "done": false
+        },
+        {
+          "step": 3,
+          "label": "Send WhatsApp/Email",
+          "done": false
+        },
+        {
+          "step": 4,
+          "label": "Schedule Demo",
+          "done": false
+        },
+        {
+          "step": 5,
+          "label": "Present Proposal",
+          "done": false
+        },
+        {
+          "step": 6,
+          "label": "Client Decision",
+          "done": false
+        },
+        {
+          "step": 7,
+          "label": "Onboarding",
+          "done": false
+        }
+      ],
+      "action_history": []
+    },
+    {
+      "business_name": "Asta's Desi Darbar",
+      "category": "restaurants",
+      "location": "Andhra Pradesh",
+      "country": "India",
+      "date_scraped": "2026-05-13",
+      "phone": "08555813364",
+      "website": "N/A",
+      "email": "N/A",
+      "rating": "4.4",
+      "reviews": "717",
+      "hours": "Open \u00b7 Closes",
+      "has_website": "No",
+      "priority": "\ud83d\udd25 HIGH",
+      "lead_status": "New Lead",
+      "notes": "",
+      "lead_id": "fac0805b",
+      "agent": "Gowtham Vanapalli",
+      "client_status": "new",
+      "tasks": [
+        {
+          "step": 1,
+          "label": "First Contact Attempt",
+          "done": false
+        },
+        {
+          "step": 2,
+          "label": "Follow-up Call",
+          "done": false
+        },
+        {
+          "step": 3,
+          "label": "Send WhatsApp/Email",
+          "done": false
+        },
+        {
+          "step": 4,
+          "label": "Schedule Demo",
+          "done": false
+        },
+        {
+          "step": 5,
+          "label": "Present Proposal",
+          "done": false
+        },
+        {
+          "step": 6,
+          "label": "Client Decision",
+          "done": false
+        },
+        {
+          "step": 7,
+          "label": "Onboarding",
+          "done": false
+        }
+      ],
+      "action_history": []
+    },
+    {
+      "business_name": "Sivakoti's Food Magic Restaurant",
+      "category": "restaurants",
+      "location": "Andhra Pradesh",
+      "country": "India",
+      "date_scraped": "2026-05-13",
+      "phone": "09966533069",
+      "website": "N/A",
+      "email": "N/A",
+      "rating": "4.0",
+      "reviews": "1,256",
+      "hours": "Open \u00b7 Closes",
+      "has_website": "No",
+      "priority": "\ud83d\udd25 HIGH",
+      "lead_status": "New Lead",
+      "notes": "",
+      "lead_id": "5bb840d3",
+      "agent": "Gowtham Vanapalli",
+      "client_status": "new",
+      "tasks": [
+        {
+          "step": 1,
+          "label": "First Contact Attempt",
+          "done": false
+        },
+        {
+          "step": 2,
+          "label": "Follow-up Call",
+          "done": false
+        },
+        {
+          "step": 3,
+          "label": "Send WhatsApp/Email",
+          "done": false
+        },
+        {
+          "step": 4,
+          "label": "Schedule Demo",
+          "done": false
+        },
+        {
+          "step": 5,
+          "label": "Present Proposal",
+          "done": false
+        },
+        {
+          "step": 6,
+          "label": "Client Decision",
+          "done": false
+        },
+        {
+          "step": 7,
+          "label": "Onboarding",
+          "done": false
+        }
+      ],
+      "action_history": []
+    },
+    {
+      "business_name": "Raju Gari Dhaba",
+      "category": "restaurants",
+      "location": "Andhra Pradesh",
+      "country": "India",
+      "date_scraped": "2026-05-13",
+      "phone": "09966527667",
+      "website": "N/A",
+      "email": "N/A",
+      "rating": "4.0",
+      "reviews": "5,121",
+      "hours": "N/A",
+      "has_website": "No",
+      "priority": "\ud83d\udd25 HIGH",
+      "lead_status": "New Lead",
+      "notes": "",
+      "lead_id": "1d9656c4",
+      "agent": "Gowtham Vanapalli",
+      "client_status": "new",
+      "tasks": [
+        {
+          "step": 1,
+          "label": "First Contact Attempt",
+          "done": false
+        },
+        {
+          "step": 2,
+          "label": "Follow-up Call",
+          "done": false
+        },
+        {
+          "step": 3,
+          "label": "Send WhatsApp/Email",
+          "done": false
+        },
+        {
+          "step": 4,
+          "label": "Schedule Demo",
+          "done": false
+        },
+        {
+          "step": 5,
+          "label": "Present Proposal",
+          "done": false
+        },
+        {
+          "step": 6,
+          "label": "Client Decision",
+          "done": false
+        },
+        {
+          "step": 7,
+          "label": "Onboarding",
+          "done": false
+        }
+      ],
+      "action_history": []
+    },
+    {
+      "business_name": "Vijayawada's Raju Gari Ruchulu",
+      "category": "restaurants",
+      "location": "Andhra Pradesh",
+      "country": "India",
+      "date_scraped": "2026-05-13",
+      "phone": "08121036023",
+      "website": "N/A",
+      "email": "N/A",
+      "rating": "4.5",
+      "reviews": "3,339",
+      "hours": "Closed \u00b7 Opens",
+      "has_website": "No",
+      "priority": "\ud83d\udd25 HIGH",
+      "lead_status": "New Lead",
+      "notes": "",
+      "lead_id": "f94628d6",
+      "agent": "Gowtham Vanapalli",
+      "client_status": "new",
+      "tasks": [
+        {
+          "step": 1,
+          "label": "First Contact Attempt",
+          "done": false
+        },
+        {
+          "step": 2,
+          "label": "Follow-up Call",
+          "done": false
+        },
+        {
+          "step": 3,
+          "label": "Send WhatsApp/Email",
+          "done": false
+        },
+        {
+          "step": 4,
+          "label": "Schedule Demo",
+          "done": false
+        },
+        {
+          "step": 5,
+          "label": "Present Proposal",
+          "done": false
+        },
+        {
+          "step": 6,
+          "label": "Client Decision",
+          "done": false
+        },
+        {
+          "step": 7,
+          "label": "Onboarding",
+          "done": false
+        }
+      ],
+      "action_history": []
+    },
+    {
+      "business_name": "Bot 9 AI Themed Restaurant",
+      "category": "restaurants",
+      "location": "Andhra Pradesh",
+      "country": "India",
+      "date_scraped": "2026-05-13",
+      "phone": "09054567456",
+      "website": "https://www.google.com/url?q=https://site.dgtechsoln.com/bot-9-amp-gaming-park/&opi=79508299&sa=U&ved=0ahUKEwjk6Zyuh7aUAxVeUGcHHbZBIwUQ61gIHSgS&usg=AOvVaw1uyyFmX1ZolA53TR7y-uau",
+      "email": "N/A",
+      "rating": "4.5",
+      "reviews": "4,148",
+      "hours": "Open \u00b7 Closes",
+      "has_website": "Yes",
+      "priority": "\ud83d\udfe1 MEDIUM",
+      "lead_status": "New Lead",
+      "notes": "",
+      "lead_id": "c4ab9a3c",
+      "agent": "Gowtham Vanapalli",
+      "client_status": "new",
+      "tasks": [
+        {
+          "step": 1,
+          "label": "First Contact Attempt",
+          "done": false
+        },
+        {
+          "step": 2,
+          "label": "Follow-up Call",
+          "done": false
+        },
+        {
+          "step": 3,
+          "label": "Send WhatsApp/Email",
+          "done": false
+        },
+        {
+          "step": 4,
+          "label": "Schedule Demo",
+          "done": false
+        },
+        {
+          "step": 5,
+          "label": "Present Proposal",
+          "done": false
+        },
+        {
+          "step": 6,
+          "label": "Client Decision",
+          "done": false
+        },
+        {
+          "step": 7,
+          "label": "Onboarding",
+          "done": false
+        }
+      ],
+      "action_history": []
+    },
+    {
+      "business_name": "Kanhaji Restaurant, Visakhapatnam",
+      "category": "restaurants",
+      "location": "Andhra Pradesh",
+      "country": "India",
+      "date_scraped": "2026-05-13",
+      "phone": "09390219693",
+      "website": "https://www.google.com/url?q=https://www.facebook.com/KanhajiVizag/&opi=79508299&sa=U&ved=0ahUKEwie-vixh7aUAxXUSGwGHYwzCg0Q61gIGygS&usg=AOvVaw1VvQhdM3HAwADwXs7j4JpD",
+      "email": "N/A",
+      "rating": "4.1",
+      "reviews": "2,422",
+      "hours": "Open \u00b7 Closes",
+      "has_website": "Yes",
+      "priority": "\ud83d\udfe1 MEDIUM",
+      "lead_status": "New Lead",
+      "notes": "",
+      "lead_id": "8e35dad3",
+      "agent": "Gowtham Vanapalli",
+      "client_status": "new",
+      "tasks": [
+        {
+          "step": 1,
+          "label": "First Contact Attempt",
+          "done": false
+        },
+        {
+          "step": 2,
+          "label": "Follow-up Call",
+          "done": false
+        },
+        {
+          "step": 3,
+          "label": "Send WhatsApp/Email",
+          "done": false
+        },
+        {
+          "step": 4,
+          "label": "Schedule Demo",
+          "done": false
+        },
+        {
+          "step": 5,
+          "label": "Present Proposal",
+          "done": false
+        },
+        {
+          "step": 6,
+          "label": "Client Decision",
+          "done": false
+        },
+        {
+          "step": 7,
+          "label": "Onboarding",
+          "done": false
+        }
+      ],
+      "action_history": []
+    },
+    {
+      "business_name": "Star Annapurna Restaurant",
+      "category": "restaurants",
+      "location": "Andhra Pradesh",
+      "country": "India",
+      "date_scraped": "2026-05-13",
+      "phone": "07893411424",
+      "website": "N/A",
+      "email": "N/A",
+      "rating": "4.5",
+      "reviews": "204",
+      "hours": "Open \u00b7 Closes",
+      "has_website": "No",
+      "priority": "\ud83d\udd25 HIGH",
+      "lead_status": "New Lead",
+      "notes": "",
+      "lead_id": "6e221fad",
+      "agent": "Gowtham Vanapalli",
+      "client_status": "new",
+      "tasks": [
+        {
+          "step": 1,
+          "label": "First Contact Attempt",
+          "done": false
+        },
+        {
+          "step": 2,
+          "label": "Follow-up Call",
+          "done": false
+        },
+        {
+          "step": 3,
+          "label": "Send WhatsApp/Email",
+          "done": false
+        },
+        {
+          "step": 4,
+          "label": "Schedule Demo",
+          "done": false
+        },
+        {
+          "step": 5,
+          "label": "Present Proposal",
+          "done": false
+        },
+        {
+          "step": 6,
+          "label": "Client Decision",
+          "done": false
+        },
+        {
+          "step": 7,
+          "label": "Onboarding",
+          "done": false
+        }
+      ],
+      "action_history": []
+    },
+    {
+      "business_name": "Eaters Stop Restaurant",
+      "category": "restaurants",
+      "location": "Andhra Pradesh",
+      "country": "India",
+      "date_scraped": "2026-05-13",
+      "phone": "09502866688",
+      "website": "https://www.google.com/url?q=https://www.eatersstop.com/&opi=79508299&sa=U&ved=0ahUKEwiOm-e1h7aUAxUGe2wGHV8dMLsQ61gIHSgS&usg=AOvVaw0iMQ-gM6SBwCSsKHdWGxxT",
+      "email": "N/A",
+      "rating": "4.0",
+      "reviews": "6,169",
+      "hours": "Open \u00b7 Closes",
+      "has_website": "Yes",
+      "priority": "\ud83d\udfe1 MEDIUM",
+      "lead_status": "New Lead",
+      "notes": "",
+      "lead_id": "938ec52e",
+      "agent": "Gowtham Vanapalli",
+      "client_status": "new",
+      "tasks": [
+        {
+          "step": 1,
+          "label": "First Contact Attempt",
+          "done": false
+        },
+        {
+          "step": 2,
+          "label": "Follow-up Call",
+          "done": false
+        },
+        {
+          "step": 3,
+          "label": "Send WhatsApp/Email",
+          "done": false
+        },
+        {
+          "step": 4,
+          "label": "Schedule Demo",
+          "done": false
+        },
+        {
+          "step": 5,
+          "label": "Present Proposal",
+          "done": false
+        },
+        {
+          "step": 6,
+          "label": "Client Decision",
+          "done": false
+        },
+        {
+          "step": 7,
+          "label": "Onboarding",
+          "done": false
+        }
+      ],
+      "action_history": []
+    },
+    {
+      "business_name": "Ramayya Veg. Restaurant",
+      "category": "restaurants",
+      "location": "Andhra Pradesh",
+      "country": "India",
+      "date_scraped": "2026-05-13",
+      "phone": "09295066511",
+      "website": "N/A",
+      "email": "N/A",
+      "rating": "3.9",
+      "reviews": "2,139",
+      "hours": "Open \u00b7 Closes",
+      "has_website": "No",
+      "priority": "\ud83d\udd25 HIGH",
+      "lead_status": "New Lead",
+      "notes": "",
+      "lead_id": "92416cc6",
+      "agent": "Gowtham Vanapalli",
+      "client_status": "new",
+      "tasks": [
+        {
+          "step": 1,
+          "label": "First Contact Attempt",
+          "done": false
+        },
+        {
+          "step": 2,
+          "label": "Follow-up Call",
+          "done": false
+        },
+        {
+          "step": 3,
+          "label": "Send WhatsApp/Email",
+          "done": false
+        },
+        {
+          "step": 4,
+          "label": "Schedule Demo",
+          "done": false
+        },
+        {
+          "step": 5,
+          "label": "Present Proposal",
+          "done": false
+        },
+        {
+          "step": 6,
+          "label": "Client Decision",
+          "done": false
+        },
+        {
+          "step": 7,
+          "label": "Onboarding",
+          "done": false
+        }
+      ],
+      "action_history": []
+    },
+    {
+      "business_name": "Ironhill Visakhapatnam",
+      "category": "restaurants",
+      "location": "Andhra Pradesh",
+      "country": "India",
+      "date_scraped": "2026-05-13",
+      "phone": "08977767676",
+      "website": "https://www.google.com/url?q=https://ironhillindia.com/vizag/&opi=79508299&sa=U&ved=0ahUKEwjpvp67h7aUAxUDTGwGHd0TEKEQ61gIGCgS&usg=AOvVaw1bemEjASTIcLUOU1YjBF4F",
+      "email": "N/A",
+      "rating": "4.2",
+      "reviews": "7,754",
+      "hours": "Open \u00b7 Closes",
+      "has_website": "Yes",
+      "priority": "\ud83d\udfe1 MEDIUM",
+      "lead_status": "New Lead",
+      "notes": "",
+      "lead_id": "3d90a156",
+      "agent": "Gowtham Vanapalli",
+      "client_status": "new",
+      "tasks": [
+        {
+          "step": 1,
+          "label": "First Contact Attempt",
+          "done": false
+        },
+        {
+          "step": 2,
+          "label": "Follow-up Call",
+          "done": false
+        },
+        {
+          "step": 3,
+          "label": "Send WhatsApp/Email",
+          "done": false
+        },
+        {
+          "step": 4,
+          "label": "Schedule Demo",
+          "done": false
+        },
+        {
+          "step": 5,
+          "label": "Present Proposal",
+          "done": false
+        },
+        {
+          "step": 6,
+          "label": "Client Decision",
+          "done": false
+        },
+        {
+          "step": 7,
+          "label": "Onboarding",
+          "done": false
+        }
+      ],
+      "action_history": []
+    }
+  ],
+  "tasks": [],
+  "action_logs": [
+    {
+      "id": "f6da81a1",
+      "type": "followup",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-01T21:43:40.795889",
+      "lead_id": "bb1844ad",
+      "business": "Delhi 'O' Delhi"
+    },
+    {
+      "id": "d09f06b0",
+      "type": "rejected",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-01T22:46:26.072150",
+      "lead_id": "bb1844ad",
+      "business": "Delhi 'O' Delhi"
+    },
+    {
+      "id": "ad8b1188",
+      "type": "rejected",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-01T22:46:29.479176",
+      "lead_id": "bb1844ad",
+      "business": "Delhi 'O' Delhi"
+    },
+    {
+      "id": "546798b2",
+      "type": "no_answer",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T14:12:00.900284",
+      "lead_id": "bb1844ad",
+      "business": "Delhi 'O' Delhi"
+    },
+    {
+      "id": "42ae14cd",
+      "type": "no_answer",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T14:12:05.383439",
+      "lead_id": "bb1844ad",
+      "business": "Delhi 'O' Delhi"
+    },
+    {
+      "id": "1d654e72",
+      "type": "no_answer",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T14:12:05.600960",
+      "lead_id": "bb1844ad",
+      "business": "Delhi 'O' Delhi"
+    },
+    {
+      "id": "a4c336b4",
+      "type": "no_answer",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T14:12:05.949696",
+      "lead_id": "bb1844ad",
+      "business": "Delhi 'O' Delhi"
+    },
+    {
+      "id": "92df2a5e",
+      "type": "no_answer",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T14:22:51.223774",
+      "lead_id": "bb1844ad",
+      "business": "Delhi 'O' Delhi"
+    },
+    {
+      "id": "7955c2b3",
+      "type": "no_answer",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T14:22:52.827655",
+      "lead_id": "bb1844ad",
+      "business": "Delhi 'O' Delhi"
+    },
+    {
+      "id": "0e403bbe",
+      "type": "accepted",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T14:22:54.535014",
+      "lead_id": "bb1844ad",
+      "business": "Delhi 'O' Delhi"
+    },
+    {
+      "id": "c26e0ebc",
+      "type": "answered",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T14:22:55.762474",
+      "lead_id": "bb1844ad",
+      "business": "Delhi 'O' Delhi"
+    },
+    {
+      "id": "35e8638c",
+      "type": "accepted",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T14:22:56.902415",
+      "lead_id": "bb1844ad",
+      "business": "Delhi 'O' Delhi"
+    },
+    {
+      "id": "1e5d72cd",
+      "type": "no_answer",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T14:22:57.959905",
+      "lead_id": "bb1844ad",
+      "business": "Delhi 'O' Delhi"
+    },
+    {
+      "id": "5a4c24cd",
+      "type": "called",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T14:25:11.243776",
+      "lead_id": "bb1844ad",
+      "business": "Delhi 'O' Delhi"
+    },
+    {
+      "id": "fd53eee3",
+      "type": "called",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T14:25:28.247282",
+      "lead_id": "bb1844ad",
+      "business": "Delhi 'O' Delhi"
+    },
+    {
+      "id": "51c742eb",
+      "type": "answered",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T14:25:37.158312",
+      "lead_id": "bb1844ad",
+      "business": "Delhi 'O' Delhi"
+    },
+    {
+      "id": "d24b9fb4",
+      "type": "answered",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T14:25:47.667153",
+      "lead_id": "bb1844ad",
+      "business": "Delhi 'O' Delhi"
+    },
+    {
+      "id": "e3e5ba55",
+      "type": "accepted",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T14:25:48.818075",
+      "lead_id": "bb1844ad",
+      "business": "Delhi 'O' Delhi"
+    },
+    {
+      "id": "a45f8ce2",
+      "type": "accepted",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T14:25:49.565837",
+      "lead_id": "bb1844ad",
+      "business": "Delhi 'O' Delhi"
+    },
+    {
+      "id": "9aef22cd",
+      "type": "accepted",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T14:25:50.078388",
+      "lead_id": "bb1844ad",
+      "business": "Delhi 'O' Delhi"
+    },
+    {
+      "id": "5f27b449",
+      "type": "accepted",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T14:25:50.330722",
+      "lead_id": "bb1844ad",
+      "business": "Delhi 'O' Delhi"
+    },
+    {
+      "id": "b284b236",
+      "type": "called",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T14:31:34.583578",
+      "lead_id": "bb1844ad",
+      "business": "Delhi 'O' Delhi"
+    },
+    {
+      "id": "26776e17",
+      "type": "accepted",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T14:31:49.084327",
+      "lead_id": "bb1844ad",
+      "business": "Delhi 'O' Delhi"
+    },
+    {
+      "id": "c7ad9092",
+      "type": "accepted",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T14:31:51.020450",
+      "lead_id": "bb1844ad",
+      "business": "Delhi 'O' Delhi"
+    },
+    {
+      "id": "5dc2de45",
+      "type": "called",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T14:31:58.865953",
+      "lead_id": "bb1844ad",
+      "business": "Delhi 'O' Delhi"
+    },
+    {
+      "id": "bc42ecdf",
+      "type": "called",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T14:40:59.447665",
+      "lead_id": "22dcdab1",
+      "business": "Bukhara"
+    },
+    {
+      "id": "396b0deb",
+      "type": "followup",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T14:41:01.275450",
+      "lead_id": "22dcdab1",
+      "business": "Bukhara"
+    },
+    {
+      "id": "416d3049",
+      "type": "no_answer",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T14:41:03.768677",
+      "lead_id": "22dcdab1",
+      "business": "Bukhara"
+    },
+    {
+      "id": "b2359bb1",
+      "type": "no_answer",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T14:41:05.219352",
+      "lead_id": "22dcdab1",
+      "business": "Bukhara"
+    },
+    {
+      "id": "724bf6b9",
+      "type": "no_answer",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T14:41:05.773897",
+      "lead_id": "22dcdab1",
+      "business": "Bukhara"
+    },
+    {
+      "id": "54eafb57",
+      "type": "rejected",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T14:41:07.554579",
+      "lead_id": "22dcdab1",
+      "business": "Bukhara"
+    },
+    {
+      "id": "2cc10f4c",
+      "type": "no_answer",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T14:54:00.859804",
+      "lead_id": "bb1844ad",
+      "business": "Delhi 'O' Delhi"
+    },
+    {
+      "id": "f45441ad",
+      "type": "accepted",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T14:54:02.029989",
+      "lead_id": "bb1844ad",
+      "business": "Delhi 'O' Delhi"
+    },
+    {
+      "id": "540ddc5a",
+      "type": "answered",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T14:54:03.113843",
+      "lead_id": "bb1844ad",
+      "business": "Delhi 'O' Delhi"
+    },
+    {
+      "id": "a43b77d8",
+      "type": "no_answer",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T14:54:05.573795",
+      "lead_id": "bb1844ad",
+      "business": "Delhi 'O' Delhi"
+    },
+    {
+      "id": "629c5277",
+      "type": "answered",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T14:54:12.084929",
+      "lead_id": "bb1844ad",
+      "business": "Delhi 'O' Delhi"
+    },
+    {
+      "id": "29ad4205",
+      "type": "accepted",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T14:54:22.728155",
+      "lead_id": "bb1844ad",
+      "business": "Delhi 'O' Delhi"
+    },
+    {
+      "id": "aa6bafd3",
+      "type": "answered",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T15:00:01.500907",
+      "lead_id": "bb1844ad",
+      "business": "Delhi 'O' Delhi"
+    },
+    {
+      "id": "2fb91f6c",
+      "type": "rejected",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T15:00:02.997219",
+      "lead_id": "bb1844ad",
+      "business": "Delhi 'O' Delhi"
+    },
+    {
+      "id": "44eb74c4",
+      "type": "followup",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T15:00:04.828339",
+      "lead_id": "bb1844ad",
+      "business": "Delhi 'O' Delhi"
+    },
+    {
+      "id": "8c09c119",
+      "type": "no_answer",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T15:00:08.581600",
+      "lead_id": "bb1844ad",
+      "business": "Delhi 'O' Delhi"
+    },
+    {
+      "id": "cdc874af",
+      "type": "no_answer",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T15:00:26.782285",
+      "lead_id": "bb1844ad",
+      "business": "Delhi 'O' Delhi"
+    },
+    {
+      "id": "73c2173b",
+      "type": "followup",
+      "agent": "Gowtham Vanapalli",
+      "note": "[Auto] Marked as NO_ANSWER at 3:00:26 PM",
+      "timestamp": "2026-05-02T19:21:31.355571",
+      "lead_id": "bb1844ad",
+      "business": "Delhi 'O' Delhi"
+    },
+    {
+      "id": "09903943",
+      "type": "followup",
+      "agent": "Gowtham Vanapalli",
+      "note": "[Auto] Marked as NO_ANSWER at 3:00:26 PM",
+      "timestamp": "2026-05-02T19:21:33.728244",
+      "lead_id": "bb1844ad",
+      "business": "Delhi 'O' Delhi"
+    },
+    {
+      "id": "58f4383b",
+      "type": "no_answer",
+      "agent": "Gowtham Vanapalli",
+      "note": "[Auto] Marked as NO_ANSWER at 3:00:26 PM",
+      "timestamp": "2026-05-02T19:21:35.026649",
+      "lead_id": "bb1844ad",
+      "business": "Delhi 'O' Delhi"
+    },
+    {
+      "id": "b575e1e6",
+      "type": "followup",
+      "agent": "Gowtham Vanapalli",
+      "note": "[Auto] Marked as NO_ANSWER at 3:00:26 PM",
+      "timestamp": "2026-05-02T19:21:36.573610",
+      "lead_id": "bb1844ad",
+      "business": "Delhi 'O' Delhi"
+    },
+    {
+      "id": "67a85bed",
+      "type": "no_answer",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T19:23:03.404739",
+      "lead_id": "4f6faa63",
+      "business": "Tamra Restaurant"
+    },
+    {
+      "id": "3d89b4a5",
+      "type": "followup",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T19:23:04.503493",
+      "lead_id": "4f6faa63",
+      "business": "Tamra Restaurant"
+    },
+    {
+      "id": "dc98a32c",
+      "type": "called",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T19:35:39.074329",
+      "lead_id": "411a3934",
+      "business": "38 Barracks Restaurant and Bar- Connaught Place"
+    },
+    {
+      "id": "09d76946",
+      "type": "answered",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T19:35:40.388310",
+      "lead_id": "411a3934",
+      "business": "38 Barracks Restaurant and Bar- Connaught Place"
+    },
+    {
+      "id": "0a3335b2",
+      "type": "no_answer",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T19:35:41.434973",
+      "lead_id": "411a3934",
+      "business": "38 Barracks Restaurant and Bar- Connaught Place"
+    },
+    {
+      "id": "ec38cfe1",
+      "type": "followup",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T19:35:42.836643",
+      "lead_id": "411a3934",
+      "business": "38 Barracks Restaurant and Bar- Connaught Place"
+    },
+    {
+      "id": "cc1f7b0c",
+      "type": "no_answer",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T19:50:31.580011",
+      "lead_id": "411a3934",
+      "business": "38 Barracks Restaurant and Bar- Connaught Place"
+    },
+    {
+      "id": "1457ba25",
+      "type": "accepted",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T19:50:32.774452",
+      "lead_id": "411a3934",
+      "business": "38 Barracks Restaurant and Bar- Connaught Place"
+    },
+    {
+      "id": "58e0953b",
+      "type": "accepted",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T19:50:34.280613",
+      "lead_id": "411a3934",
+      "business": "38 Barracks Restaurant and Bar- Connaught Place"
+    },
+    {
+      "id": "6668f7c3",
+      "type": "followup",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T19:50:35.035378",
+      "lead_id": "411a3934",
+      "business": "38 Barracks Restaurant and Bar- Connaught Place"
+    },
+    {
+      "id": "902e9ba9",
+      "type": "followup",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-02T22:46:53.782341",
+      "lead_id": "cbc0ce40",
+      "business": "Hungry Birds"
+    },
+    {
+      "id": "41a9ff83",
+      "type": "called",
+      "agent": "Pawan Shiva",
+      "note": "",
+      "timestamp": "2026-05-04T11:33:03.873765",
+      "lead_id": "5e03dc75",
+      "business": "Megu"
+    },
+    {
+      "id": "0430cfc2",
+      "type": "called",
+      "agent": "Pawan Shiva",
+      "note": "[Auto] Marked as NO_ANSWER at 3:00:26 PM",
+      "timestamp": "2026-05-09T23:35:38.806420",
+      "lead_id": "bb1844ad",
+      "business": "Delhi 'O' Delhi"
+    },
+    {
+      "id": "9c4a2e4d",
+      "type": "accepted",
+      "agent": "Pawan Shiva",
+      "note": "",
+      "timestamp": "2026-05-09T23:37:39.702137",
+      "lead_id": "bffd4335",
+      "business": "INJA Restaurant"
+    },
+    {
+      "id": "93b007c6",
+      "type": "answered",
+      "agent": "Ram Tharun ",
+      "note": "",
+      "timestamp": "2026-05-09T23:45:14.168169",
+      "lead_id": "85e8b366",
+      "business": "Sono Felice by Christine \u2702"
+    },
+    {
+      "id": "45f79de3",
+      "type": "rejected",
+      "agent": "Gowtham Vanapalli",
+      "note": "",
+      "timestamp": "2026-05-13T15:49:50.245560",
+      "lead_id": "c624a65e",
+      "business": "Indian Accent"
+    }
+  ],
+  "settings": {
+    "admin_email": "vanapalligowtham890@gmail.com",
+    "sheets_id": ""
+  },
+  "messages": [
+    {
+      "user_id": "9515619108",
+      "user_name": "Gowtham Vanapalli",
+      "text": "hi pavan",
+      "timestamp": "2026-05-02T19:22:17.141182"
+    },
+    {
+      "user_id": "9515619108",
+      "user_name": "Gowtham Vanapalli",
+      "text": "hi",
+      "timestamp": "2026-05-02T19:22:23.263848"
+    },
+    {
+      "user_id": "9515619108",
+      "user_name": "Gowtham Vanapalli",
+      "text": "hello",
+      "timestamp": "2026-05-02T19:23:54.788174",
+      "id": "af5f9eb2",
+      "channel": "ira_ai"
+    },
+    {
+      "id": "25324a84",
+      "user_id": "ira_ai",
+      "user_name": "Ira AI",
+      "text": "\ud83d\udcca Current Pipeline: 112 total leads \u2014 109 new, 0 contacted, 0 accepted, 1 rejected, 0 no answer. 24 high-priority leads need attention!",
+      "timestamp": "2026-05-02T19:23:54.788174",
+      "is_ai": true,
+      "channel": "ira_ai"
+    },
+    {
+      "user_id": "9515619108",
+      "user_name": "Gowtham Vanapalli",
+      "text": "hi",
+      "timestamp": "2026-05-02T19:24:09.524326",
+      "id": "b3244ebe",
+      "channel": "Pawan Shiva"
+    },
+    {
+      "user_id": "9515619108",
+      "user_name": "Gowtham Vanapalli",
+      "text": "@ira",
+      "timestamp": "2026-05-02T19:26:12.562304",
+      "id": "780e98d9",
+      "channel": "ira_ai"
+    },
+    {
+      "id": "38110196",
+      "user_id":"\ud83d\udcca Current Pipeline: 112 total leads \u2014 109 new, 0 contacted, 0 accepted, 1 rejected, 0 no answer. 24 high-priority leads need attention!",
+      "timestamp": "2026-05-02T19:34:32.103697",
+      "is_ai": true,
+      "channel": "ira_ai"
+    },
+    {
+      "user_id": "9515619108",
+      "user_name": "Gowtham Vanapalli",
+      "text": "@pawan",
+      "timestamp": "2026-05-02T19:34:44.811203",
+      "id": "c98732e5",
+      "channel": "general"
+    },
+    {
+      "user_id": "9515619108",
+      "user_name": "Gowtham Vanapalli",
+      "text": "hi",
+      "timestamp": "2026-05-04T11:31:01.692891",
+      "id": "be1a18ae",
+      "channel": "general"
+    },
+    {
+      "user_id": "9515619109",
+      "user_name": "Pawan Shiva",
+      "text": "hi",
+      "timestamp": "2026-05-04T11:31:55.679696",
+      "id": "b454325c",
+      "channel": "general"
+    },
+    {
+      "user_id": "9515619109",
+      "user_name": "Pawan Shiva",
+      "text": "hi]",
+      "timestamp": "2026-05-09T23:40:23.178683",
+      "id": "e07f73d9",
+      "channel": "Ram Tharun "
+    },
+    {
+      "user_id": "9515619109",
+      "user_name": "Pawan Shiva",
+      "text": "hey hi to all",
+      "timestamp": "2026-05-09T23:40:37.436515",
+      "id": "abd872b5",
+      "channel": "general"
+    },
+    {
+      "user_id": "9515619108",
+      "user_name": "Gowtham Vanapalli",
+      "text": "@ira",
+      "timestamp": "2026-05-09T23:41:05.052260",
+      "id": "72f441a3",
+      "channel": "general"
+    },
+    {
+      "id": "3dd92e6e",
+      "user_id": "ira_ai",
+      "user_name": "Ira AI",
+      "text": "\ud83d\udcca Current Pipeline: 288 total leads \u2014 281 new, 2 contacted, 1 accepted, 1 rejected, 0 no answer. 107 high-priority leads need attention!",
+      "timestamp": "2026-05-09T23:41:05.053263",
+      "is_ai": true,
+      "channel": "general"
+    },
+    {
+      "user_id": "9515619108",
+      "user_name": "Gowtham Vanapalli",
+      "text": "@ira",
+      "timestamp": "2026-05-13T15:57:15.760793",
+      "id": "0af85a51",
+      "channel": "general"
+    },
+    {
+      "id": "1a37603c",
+      "user_id": "ira_ai",
+      "user_name": "Ira AI",
+      "text": "\ud83d\udcca Current Pipeline: 0 total leads \u2014 0 new, 0 contacted, 0 accepted, 0 rejected, 0 no answer. 0 high-priority leads need attention!",
+      "timestamp": "2026-05-13T15:57:15.760793",
+      "is_ai": true,
+      "channel": "general"
+    }
+  ],
+  "channels": {
+    "general": [],
+    "ira_ai": []
+  },
+  "users": [
+    {
+      "id": "9515619108",
+      "pass": "ishiva@9108",
+      "name": "Gowtham Vanapalli",
+      "role": "admin"
+    },
+    {
+      "id": "9515619109",
+      "pass": "ishiva@9109",
+      "name": "Pawan Shiva",
+      "role": "agent"
+    },
+    {
+      "id": "9515619110",
+      "pass": "ishiva@9110",
+      "name": "Avinash Shiva Teja",
+      "role": "agent"
+    },
+    {
+      "id": "9515619112",
+      "pass": "ishiva@9112",
+      "name": "Lead Agent",
+      "role": "agent"
+    },
+    {
+      "id": "2569687413",
+      "pass": "ishiva@7413",
+      "name": "Satvika Bandaru",
+      "role": "agent"
+    },
+    {
+      "id": "1528105295",
+      "pass": "812952766",
+      "name": "Ram Tharun ",
+      "role": "agent"
+    }
+  ]
+}    },
+    {
+      "user_id": "9515619108",
+      "user_name": "Gowtham Vanapalli",
+      "text": "@ira",
+      "timestamp": "2026-05-13T15:57:15.760793",
+      "id": "0af85a51",
+      "channel": "general"
+    },
+    {
+      "id": "1a37603c",
+      "user_id": "ira_ai",
+      "user_name": "Ira AI",
+      "text": "\ud83d\udcca Current Pipeline: 0 total leads \u2014 0 new, 0 contacted, 0 accepted, 0 rejected, 0 no answer. 0 high-priority leads need attention!",
+      "timestamp": "2026-05-13T15:57:15.760793",
+      "is_ai": true,
+      "channel": "general"
+    }
+  ],
+  "channels": {
+    "general": [],
+    "ira_ai": []
+  },
+  "users": [
+    {
+      "id": "9515619108",
+      "pass": "ishiva@9108",
+      "name": "Gowtham Vanapalli",
+      "role": "admin"
+    },
+    {
+      "id": "9515619109",
+      "pass": "ishiva@9109",
+      "name": "Pawan Shiva",
+      "role": "agent"
+    },
+    {
+      "id": "9515619110",
+      "pass": "ishiva@9110",
+      "name": "Avinash Shiva Teja",
+      "role": "agent"
+    },
+    {
+      "id": "9515619112",
+      "pass": "ishiva@9112",
+      "name": "Lead Agent",
+      "role": "agent"
+    },
+    {
+      "id": "2569687413",
+      "pass": "ishiva@7413",
+      "name": "Satvika Bandaru",
+      "role": "agent"
+    },
+    {
+      "id": "1528105295",
+      "pass": "812952766",
+      "name": "Ram Tharun ",
+      "role": "agent"
+    }
+  ]
+}
