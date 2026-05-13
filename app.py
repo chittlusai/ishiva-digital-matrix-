@@ -135,7 +135,10 @@ def api_scrape_stream():
             if scraper.driver:
                 scraper.driver.quit()
 
-    return app.response_class(generate(), mimetype='text/event-stream')
+    response = app.response_class(generate(), mimetype='text/event-stream')
+    response.headers['X-Accel-Buffering'] = 'no'
+    response.headers['Cache-Control'] = 'no-cache'
+    return response
 
 # ── Leads ──
 @app.route('/api/leads')
@@ -728,7 +731,10 @@ def chitin_scrape_stream():
 
         yield f"data: {json.dumps({'done': True, 'total': count})}\n\n"
 
-    return app.response_class(generate(), mimetype='text/event-stream')
+    response = app.response_class(generate(), mimetype='text/event-stream')
+    response.headers['X-Accel-Buffering'] = 'no'
+    response.headers['Cache-Control'] = 'no-cache'
+    return response
 
 @app.route('/api/chitin/leads')
 def get_chitin_leads():
