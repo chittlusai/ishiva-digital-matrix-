@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Chitin Export Data — Digital Matrix Pro</title>
+    <meta name="description" content="International chitin importer lead generation module with 4-layer free scraping">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/chitin.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══ -->
+<header class="ch-header" id="mainHeader">
+    <div class="ch-header-left">
+        <div class="ch-logo">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+        </div>
+        <div>
+            <h1>Chitin Export Data</h1>
+            <p class="ch-subtitle">Digital Matrix Pro — International Lead Module</p>
+        </div>
+    </div>
+    <div class="ch-header-right">
+        <div class="ch-hs-badge">HS Code: 3913 10 00</div>
+        <button class="ch-btn ch-btn-ghost" id="loadPrevBtn" title="Load previous results">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
+            Load Previous
+        </button>
+    </div>
+</header>
+
+<!-- ═══ WIZARD SECTION ═══ -->
+<main class="ch-main" id="wizardSection">
+    <div class="ch-wizard-wrapper">
+        <div class="ch-hero" id="heroSection">
+            <div class="ch-hero-icon">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
+                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                </svg>
+            </div>
+            <h2>Chitin Importer Lead Generator</h2>
+            <p>Capture verified buyer contacts from Google Maps, websites, trade databases, and Alibaba — completely free.</p>
+        </div>
+
+        <!-- Step Indicator -->
+        <div class="ch-steps" id="stepsBar">
+            <div class="ch-step active" id="chStep1"><div class="ch-step-num">1</div><div class="ch-step-label">Countries</div></div>
+            <div class="ch-step" id="chStep2"><div class="ch-step-num">2</div><div class="ch-step-label">Sources</div></div>
+            <div class="ch-step" id="chStep3"><div class="ch-step-num">3</div><div class="ch-step-label">Settings</div></div>
+            <div class="ch-step" id="chStep4"><div class="ch-step-num">4</div><div class="ch-step-label">Extract</div></div>
+        </div>
+
+        <!-- Step 1: Country Selection -->
+        <div class="ch-card ch-wizard-card" id="wizardCard">
+            <div class="ch-panel active" id="panel1">
+                <h3 class="ch-panel-title">Select Target Countries</h3>
+                <p class="ch-panel-desc">Choose the markets you want to find chitin importers in. Select multiple countries for broader coverage.</p>
+                
+                <div class="ch-country-grid" id="countryGrid">
+                    <div class="ch-country-chip selected" data-country="USA"><span class="ch-flag">🇺🇸</span><span>USA</span></div>
+                    <div class="ch-country-chip" data-country="Japan"><span class="ch-flag">🇯🇵</span><span>Japan</span></div>
+                    <div class="ch-country-chip" data-country="Germany"><span class="ch-flag">🇩🇪</span><span>Germany</span></div>
+                    <div class="ch-country-chip" data-country="South Korea"><span class="ch-flag">🇰🇷</span><span>South Korea</span></div>
+                    <div class="ch-country-chip" data-country="France"><span class="ch-flag">🇫🇷</span><span>France</span></div>
+                    <div class="ch-country-chip" data-country="Australia"><span class="ch-flag">🇦🇺</span><span>Australia</span></div>
+                    <div class="ch-country-chip" data-country="China"><span class="ch-flag">🇨🇳</span><span>China</span></div>
+                    <div class="ch-country-chip" data-country="Netherlands"><span class="ch-flag">🇳🇱</span><span>Netherlands</span></div>
+                    <div class="ch-country-chip" data-country="Canada"><span class="ch-flag">🇨🇦</span><span>Canada</span></div>
+                    <div class="ch-country-chip" data-country="UK"><span class="ch-flag">🇬🇧</span><span>UK</span></div>
+                </div>
+
+                <div class="ch-actions">
+                    <button class="ch-btn ch-btn-secondary" id="selectAllBtn">Select All</button>
+                    <button class="ch-btn ch-btn-primary" id="toStep2">Continue to Sources →</button>
+                </div>
+            </div>
+
+            <!-- Step 2: Source Selection -->
+            <div class="ch-panel" id="panel2">
+                <h3 class="ch-panel-title">Choose Data Sources</h3>
+                <p class="ch-panel-desc">Enable or disable each scraping layer. All sources are 100% free.</p>
+
+                <div class="ch-source-grid">
+                    <div class="ch-source-card selected" data-source="maps">
+                        <div class="ch-source-check">✓</div>
+                        <div class="ch-source-icon" style="background:#E8F5E9; color:#2E7D32;">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div class="ch-source-info">
+                            <strong>Layer 1: Google Maps</strong>
+                            <span>Selenium scraper — business names, phones, websites</span>
+                        </div>
+                        <div class="ch-source-tag tag-green">Primary</div>
+                    </div>
+
+                    <div class="ch-source-card selected" data-source="email">
+                        <div class="ch-source-check">✓</div>
+                        <div class="ch-source-icon" style="background:#E3F2FD; color:#1565C0;">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        </div>
+                        <div class="ch-source-info">
+                            <strong>Layer 2: Email Enrichment</strong>
+                            <span>Visits websites to find emails, LinkedIn, contacts</span>
+                        </div>
+                        <div class="ch-source-tag tag-blue">Enrichment</div>
+                    </div>
+
+                    <div class="ch-source-card selected" data-source="trade">
+                        <div class="ch-source-check">✓</div>
+                        <div class="ch-source-icon" style="background:#FFF3E0; color:#E65100;">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                        </div>
+                        <div class="ch-source-info">
+                            <strong>Layer 3: Trade Databases</strong>
+                            <span>ImportYeti + Zauba — verified shipment records</span>
+                        </div>
+                        <div class="ch-source-tag tag-orange">Verified</div>
+                    </div>
+
+                    <div class="ch-source-card selected" data-source="alibaba">
+                        <div class="ch-source-check">✓</div>
+                        <div class="ch-source-icon" style="background:#FCE4EC; color:#C62828;">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8.5 14.5A2.5 2.5 0 0011 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 11-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 002.5 2.5z"/></svg>
+                        </div>
+                        <div class="ch-source-info">
+                            <strong>Layer 4: Alibaba Buyers</strong>
+                            <span>Active buying requests from international importers</span>
+                        </div>
+                        <div class="ch-source-tag tag-red">Hot Leads</div>
+                    </div>
+                </div>
+
+                <div class="ch-actions">
+                    <button class="ch-btn ch-btn-secondary" id="backStep1">← Back</button>
+                    <button class="ch-btn ch-btn-primary" id="toStep3">Continue to Settings →</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Settings -->
+            <div class="ch-panel" id="panel3">
+                <h3 class="ch-panel-title">Extraction Settings</h3>
+                <p class="ch-panel-desc">Configure the maximum number of leads and additional options.</p>
+
+                <div class="ch-settings-grid">
+                    <div class="ch-setting-group">
+                        <label class="ch-setting-label">Extraction Volume</label>
+                        <div class="ch-range-wrapper">
+                            <input type="range" id="limitSlider" min="10" max="100" value="50" step="10">
+                            <div class="ch-range-display">
+                                <span id="limitDisplay">50</span> leads max
+                            </div>
+                        </div>
+                        <div class="ch-range-marks">
+                            <span>10</span><span>25</span><span>50</span><span>75</span><span>100</span>
+                        </div>
+                    </div>
+
+                    <div class="ch-setting-group">
+                        <label class="ch-setting-label">Search Queries</label>
+                        <div class="ch-query-list">
+                            <div class="ch-query-chip">🔍 chitin importer [country]</div>
+                            <div class="ch-query-chip">🔍 chitosan buyer [country]</div>
+                            <div class="ch-query-chip">🔍 marine chemical importer [country]</div>
+                        </div>
+                    </div>
+
+                    <div class="ch-info-box">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        <div>
+                            <strong>Estimated Time:</strong> <span id="estTime">5-15 minutes</span> depending on volume and sources enabled.
+                            Anti-block delays are built-in to protect your IP.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ch-actions">
+                    <button class="ch-btn ch-btn-secondary" id="backStep2">← Back</button>
+                    <button class="ch-btn ch-btn-primary" id="toStep4">Continue to Extract →</button>
+                </div>
+            </div>
+
+            <!-- Step 4: Confirm & Extract -->
+            <div class="ch-panel" id="panel4">
+                <h3 class="ch-panel-title">Ready to Extract</h3>
+                <p class="ch-panel-desc">Review your configuration and start the extraction process.</p>
+
+                <div class="ch-summary-grid">
+                    <div class="ch-summary-item">
+                        <div class="ch-summary-label">Countries</div>
+                        <div class="ch-summary-value" id="summaryCountries">USA</div>
+                    </div>
+                    <div class="ch-summary-item">
+                        <div class="ch-summary-label">Sources</div>
+                        <div class="ch-summary-value" id="summarySources">All 4 layers</div>
+                    </div>
+                    <div class="ch-summary-item">
+                        <div class="ch-summary-label">Max Leads</div>
+                        <div class="ch-summary-value" id="summaryLimit">50</div>
+                    </div>
+                    <div class="ch-summary-item">
+                        <div class="ch-summary-label">HS Code</div>
+                        <div class="ch-summary-value">3913 10 00</div>
+                    </div>
+                </div>
+
+                <div class="ch-actions">
+                    <button class="ch-btn ch-btn-secondary" id="backStep3">← Back</button>
+                    <button class="ch-btn ch-btn-extract" id="startExtractBtn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                        Start 4-Layer Extraction
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- ═══ RESULTS SECTION ═══ -->
+<div class="ch-results-section" id="resultsSection" style="display:none">
+    <!-- Progress Bar -->
+    <div class="ch-progress-area">
+        <div class="ch-progress-header">
+            <div class="ch-progress-status" id="progressStatus">
+                <div class="ch-spinner"></div>
+                <span id="statusText">Initializing extraction...</span>
+            </div>
+            <span class="ch-progress-count"><span id="curCount">0</span> / <span id="maxCount">50</span> leads</span>
+        </div>
+        <div class="ch-progress-track"><div class="ch-progress-fill" id="progressBar"></div></div>
+        <div class="ch-layer-indicators" id="layerIndicators">
+            <div class="ch-layer-badge active" id="layerBadge1">L1: Maps</div>
+            <div class="ch-layer-badge" id="layerBadge2">L2: Emails</div>
+            <div class="ch-layer-badge" id="layerBadge3">L3: Trade</div>
+            <div class="ch-layer-badge" id="layerBadge4">L4: Alibaba</div>
+        </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="ch-stats-grid">
+        <div class="ch-stat-card">
+            <div class="ch-stat-icon" style="background:#E8F5E9; color:#2E7D32;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
+            </div>
+            <div><div class="ch-stat-label">Total Found</div><div class="ch-stat-value" id="statTotal">0</div></div>
+        </div>
+        <div class="ch-stat-card">
+            <div class="ch-stat-icon" style="background:#E3F2FD; color:#1565C0;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div><div class="ch-stat-label">Emails Found</div><div class="ch-stat-value" id="statEmails">0</div></div>
+        </div>
+        <div class="ch-stat-card">
+            <div class="ch-stat-icon" style="background:#FCE4EC; color:#C62828;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8.5 14.5A2.5 2.5 0 0011 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 11-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 002.5 2.5z"/></svg>
+            </div>
+            <div><div class="ch-stat-label">HIGH Confidence</div><div class="ch-stat-value" id="statHigh">0</div></div>
+        </div>
+        <div class="ch-stat-card">
+            <div class="ch-stat-icon" style="background:#FFF3E0; color:#E65100;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <div><div class="ch-stat-label">Countries Hit</div><div class="ch-stat-value" id="statCountries">0</div></div>
+        </div>
+    </div>
+
+    <!-- Action Bar: Export + New Extraction -->
+    <div class="ch-export-bar" id="exportBar">
+        <div class="ch-export-left">
+            <button class="ch-btn ch-btn-secondary" id="newExtractionBtn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10"/></svg>
+                New Extraction
+            </button>
+            <button class="ch-btn ch-btn-ghost" id="clearDataBtn" style="color:var(--text2)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
+                Clear All
+            </button>
+        </div>
+        <div class="ch-export-actions">
+            <button class="ch-btn ch-btn-primary" id="exportPdfBtn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                Export as PDF
+            </button>
+            <button class="ch-btn ch-btn-success" id="exportExcelBtn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                Export as Excel
+            </button>
+        </div>
+    </div>
+
+    <!-- Advanced Filters -->
+    <div class="ch-adv-filters">
+        <div class="ch-adv-filters-left">
+            <select id="filterCountry" class="ch-select">
+                <option value="all">All Countries</option>
+            </select>
+            <select id="filterSource" class="ch-select">
+                <option value="all">All Sources</option>
+                <option value="Google Maps">Google Maps</option>
+                <option value="ImportYeti">ImportYeti</option>
+                <option value="Alibaba">Alibaba</option>
+            </select>
+            <button class="ch-toggle-filter active" id="filterAll" data-filter="all">📋 All Leads</button>
+            <button class="ch-toggle-filter" id="filterHasEmail" data-filter="hasEmail">📧 Has Email</button>
+            <button class="ch-toggle-filter" id="filterHasPhone" data-filter="hasPhone">📞 Has Phone</button>
+            <button class="ch-toggle-filter" id="filterHasLinkedin" data-filter="hasLinkedin">🔗 Has LinkedIn</button>
+        </div>
+        <div class="ch-adv-filters-right">
+            <input type="text" id="searchLeads" class="ch-search-input" placeholder="Search company name...">
+        </div>
+    </div>
+
+    <!-- Results Table -->
+    <div class="ch-table-container">
+        <div class="ch-table-header">
+            <h3>Extracted Leads <span id="filteredCount" style="font-weight:400;color:var(--text3);font-size:0.85rem"></span></h3>
+            <div class="ch-filter-chips">
+                <button class="ch-filter active" data-filter="all">All</button>
+                <button class="ch-filter" data-filter="HIGH">🔥 HIGH</button>
+                <button class="ch-filter" data-filter="MEDIUM">🟡 MEDIUM</button>
+                <button class="ch-filter" data-filter="LOW">⚪ LOW</button>
+            </div>
+        </div>
+        <div class="ch-table-responsive">
+            <table id="resultsTable">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Company</th>
+                        <th>Country</th>
+                        <th>Contact</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Website</th>
+                        <th>LinkedIn</th>
+                        <th>Source</th>
+                        <th>Confidence</th>
+                    </tr>
+                </thead>
+                <tbody id="resultsBody">
+                    <!-- Populated by JS -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- ═══ TOAST CONTAINER ═══ -->
+<div id="toast-container"></div>
+
+<script src="/static/js/chitin.js"></script>
+</body>
+</html>

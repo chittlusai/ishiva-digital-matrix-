@@ -3,375 +3,744 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
-    <title>ishiva Digital | Lead Matrix Pro</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>ishiva Lead Matrix Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
 </head>
 <body>
 
-<!-- ═══ LOGIN ═══ -->
+<!-- ═══ LOGIN PAGE ═══ -->
 <div id="loginWrapper">
-    <div class="login-box card">
-        <div class="brand"><h1>ishiva Digital</h1><p>Lead Matrix Professional</p></div>
-        <form id="loginForm">
-            <div class="form-group"><label>Authentication ID</label><input type="text" id="authId" placeholder="Enter ID" required autocomplete="off"></div>
-            <div class="form-group"><label>Passcode</label><input type="password" id="authPass" placeholder="Enter passcode" required autocomplete="off"></div>
-            <button type="submit" class="btn btn-primary">Sign In</button>
-            <div id="loginError" style="color:var(--danger);margin-top:.6rem;font-size:.78rem;display:none;text-align:center">Invalid credentials</div>
-        </form>
+    <div class="login-split">
+        <div class="login-brand">
+            <div class="brand-logo">LM</div>
+            <h1>ishiva Lead Matrix Pro</h1>
+            <p>The intelligent B2B CRM and automated lead generation platform for high-performance sales teams.</p>
+        </div>
+        <div class="login-form-container">
+            <div class="login-box">
+                <h2>Welcome back</h2>
+                <p class="subtitle">Sign in to your agent workspace</p>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label>Agent ID</label>
+                        <input type="text" id="authId" placeholder="e.g. 9515619108" required autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label>Passcode</label>
+                        <input type="password" id="authPass" placeholder="Enter your passcode" required autocomplete="off">
+                    </div>
+                    <button type="submit" class="btn btn-primary w-full" style="padding: 0.8rem; font-size: 1rem; margin-top: 1rem;">
+                        Sign In to Workspace
+                    </button>
+                    <div id="loginError" class="error-msg">Invalid Agent ID or Passcode</div>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 
-<!-- ═══ DASHBOARD ═══ -->
+<!-- ═══ APP LAYOUT ═══ -->
 <div class="app-container" id="app" style="opacity:0;pointer-events:none">
 
-    <!-- Sidebar -->
-    <aside class="sidebar card">
-        <div class="brand"><h1>ishiva Digital</h1><p>Lead Matrix</p></div>
+    <!-- ── Sidebar ── -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">LM</div>
+            <h1>ishiva Lead Matrix Pro</h1>
+        </div>
+
+        <div class="nav-section">
+            <div class="nav-label">Core Tools</div>
+            <button class="nav-tab active" data-tab="scraper">
+                <svg class="icon"><use href="#i-zap"/></svg> <span>Lead Scraper</span>
+            </button>
+            <button class="nav-tab" data-tab="leads">
+                <svg class="icon"><use href="#i-list"/></svg> <span>Database</span>
+            </button>
+            <button class="nav-tab" data-tab="pipeline">
+                <svg class="icon"><use href="#i-board"/></svg> <span>Pipeline Board</span>
+            </button>
+            
+            <div class="nav-label">Workspace</div>
+            <button class="nav-tab" data-tab="tasks">
+                <svg class="icon"><use href="#i-check"/></svg> <span>My Schedule</span>
+            </button>
+            <button class="nav-tab" data-tab="chat">
+                <svg class="icon"><use href="#i-message"/></svg> <span>Conversations</span>
+                <span class="nav-badge" id="chatBadge" style="display:none">New</span>
+            </button>
+            <button class="nav-tab admin-only" style="display:none" id="chitinTabBtn" onclick="window.open('/chitin', '_blank')">
+                <svg class="icon"><use href="#i-globe"/></svg> <span>Chitin Export Data</span>
+                <span class="nav-badge" style="background:var(--success)">Pro</span>
+            </button>
+            
+            <div class="nav-label admin-only" style="display:none">Management</div>
+            <button class="nav-tab admin-only" data-tab="admin" style="display:none">
+                <svg class="icon"><use href="#i-shield"/></svg> <span>Admin Portal</span>
+            </button>
+        </div>
+
         <div class="user-profile">
-            <div class="user-avatar" id="uAvatar">G</div>
-            <div class="user-meta"><div class="name" id="uName">Agent</div><div class="role" id="uRole">–</div></div>
+            <div class="u-avatar" id="uAvatar">G</div>
+            <div class="u-info">
+                <div class="name" id="uName">Agent Name</div>
+                <div class="role" id="uRole">Role</div>
+            </div>
+            <button class="logout-btn" id="logoutBtn" title="Sign Out">
+                <svg class="icon icon-sm"><use href="#i-logout"/></svg>
+            </button>
         </div>
-        <button class="logout-btn" id="logoutBtn"><svg class="icon icon-sm"><use href="#i-logout"/></svg> Sign Out</button>
-
-        <!-- Navigation -->
-        <div class="nav-tabs" id="navTabs">
-            <button class="nav-tab active" data-tab="scraper"><svg class="icon icon-sm"><use href="#i-zap"/></svg> Scraper</button>
-            <button class="nav-tab" data-tab="leads"><svg class="icon icon-sm"><use href="#i-list"/></svg> Leads</button>
-            <button class="nav-tab" data-tab="tasks"><svg class="icon icon-sm"><use href="#i-check"/></svg> My Tasks</button>
-            <button class="nav-tab admin-only" data-tab="admin"><svg class="icon icon-sm"><use href="#i-shield"/></svg> Admin</button>
-        </div>
-
-        <!-- Wizard (inside scraper tab context) -->
-        <div class="wizard-container" id="wizardWrap">
-            <div class="wizard-step active" id="step1">
-                <div class="step-indicator"><div class="step-dot current"></div><div class="step-dot"></div><div class="step-dot"></div><div class="step-dot"></div></div>
-                <div class="wizard-title">Region</div><div class="wizard-subtitle">Select target country</div>
-                <div class="form-group"><label>Country</label><select id="country"><option value="India">India</option><option value="USA">USA</option></select></div>
-                <button class="btn btn-primary next-btn" data-next="step2">Continue <svg class="icon icon-sm"><use href="#i-right"/></svg></button>
-            </div>
-            <div class="wizard-step" id="step2">
-                <div class="step-indicator"><div class="step-dot filled"></div><div class="step-dot current"></div><div class="step-dot"></div><div class="step-dot"></div></div>
-                <div class="wizard-title">Industry</div><div class="wizard-subtitle">Choose category</div>
-                <div class="form-group"><label>Category</label>
-                    <div class="select-trigger" id="catTrigger" data-modal="catModal"><span class="placeholder">Choose…</span><svg class="icon icon-sm"><use href="#i-down"/></svg></div>
-                    <input type="hidden" id="category" value="">
-                </div>
-                <div class="wizard-actions"><button class="btn btn-ghost back-btn" data-back="step1">Back</button><button class="btn btn-primary next-btn" data-next="step3">Continue <svg class="icon icon-sm"><use href="#i-right"/></svg></button></div>
-            </div>
-            <div class="wizard-step" id="step3">
-                <div class="step-indicator"><div class="step-dot filled"></div><div class="step-dot filled"></div><div class="step-dot current"></div><div class="step-dot"></div></div>
-                <div class="wizard-title">Location</div><div class="wizard-subtitle">Target city or state</div>
-                <div class="form-group"><label>Area</label>
-                    <div class="select-trigger" id="locTrigger" data-modal="locModal"><span class="placeholder">Select…</span><svg class="icon icon-sm"><use href="#i-down"/></svg></div>
-                    <input type="hidden" id="location" value="">
-                </div>
-                <div class="wizard-actions"><button class="btn btn-ghost back-btn" data-back="step2">Back</button><button class="btn btn-primary next-btn" data-next="step4">Continue <svg class="icon icon-sm"><use href="#i-right"/></svg></button></div>
-            </div>
-            <div class="wizard-step" id="step4">
-                <div class="step-indicator"><div class="step-dot filled"></div><div class="step-dot filled"></div><div class="step-dot filled"></div><div class="step-dot current"></div></div>
-                <div class="wizard-title">Extract</div><div class="wizard-subtitle">Set volume</div>
-                <div class="form-group"><label>Count (10–200)</label><input type="number" id="limit" value="50" min="10" max="200"></div>
-                <form id="scrapeForm" style="width:100%"><div class="wizard-actions"><button type="button" class="btn btn-ghost back-btn" data-back="step3">Back</button><button type="submit" class="btn btn-primary" id="searchBtn"><svg class="icon icon-sm"><use href="#i-zap"/></svg> Extract</button></div></form>
-            </div>
-        </div>
-        <div class="sidebar-footer"><p>Lead Matrix Pro v5.0</p></div>
     </aside>
 
-    <!-- Top Bar -->
-    <header class="top-bar card">
-        <div class="progress-section" id="progressArea" style="visibility:hidden">
-            <div class="progress-info"><span id="progressStatus">Extracting…</span><span><span id="curCount">0</span>/<span id="limTotal">50</span></span></div>
-            <div class="progress-bar-bg"><div class="progress-bar-fill" id="progressBar"></div></div>
-        </div>
-        <div class="header-actions">
-            <button id="pdfBtn" class="btn btn-success btn-sm" disabled><svg class="icon icon-sm"><use href="#i-file"/></svg> PDF</button>
+    <!-- ── Top Bar ── -->
+    <header class="top-bar">
+        <div class="breadcrumb" id="topTitle">Lead Scraper</div>
+        
+        <div class="top-actions">
+            <div class="global-search">
+                <svg class="icon"><use href="#i-search"/></svg>
+                <input type="text" id="globalSearch" placeholder="Search businesses or phones...">
+            </div>
+            <button class="btn-icon" id="notificationBtn">
+                <svg class="icon"><use href="#i-bell"/></svg>
+            </button>
+            <button id="pdfBtn" class="btn btn-primary btn-sm" disabled style="display:none">
+                <svg class="icon icon-sm"><use href="#i-file"/></svg> Export PDF
+            </button>
         </div>
     </header>
 
-    <!-- Main Content -->
+    <!-- ── Main Content Area ── -->
     <main class="main-content">
 
-        <!-- TAB: Scraper / Leads -->
+        <!-- TAB: SCRAPER -->
         <div class="tab-panel active" id="panel-scraper">
-            <div class="stats-row">
-                <div class="stat-card card active" data-f="all"><div class="si c1"><svg class="icon"><use href="#i-bar"/></svg></div><div class="stat-info"><div class="label">Total</div><div class="value" id="sTotal">0</div></div></div>
-                <div class="stat-card card" data-f="hot"><div class="si c2"><svg class="icon"><use href="#i-flame"/></svg></div><div class="stat-info"><div class="label">Priority</div><div class="value" id="sHot">0</div></div></div>
-                <div class="stat-card card" data-f="top"><div class="si c3"><svg class="icon"><use href="#i-star"/></svg></div><div class="stat-info"><div class="label">4.0+ Rated</div><div class="value" id="sTop">0</div></div></div>
-                <div class="stat-card card" data-f="phone"><div class="si c4"><svg class="icon"><use href="#i-phone"/></svg></div><div class="stat-info"><div class="label">Has Phone</div><div class="value" id="sPhone">0</div></div></div>
-                <div class="stat-card card" data-f="web"><div class="si c5"><svg class="icon"><use href="#i-globe"/></svg></div><div class="stat-info"><div class="label">Has Web</div><div class="value" id="sWeb">0</div></div></div>
-            </div>
-            <div class="filter-bar">
-                <div class="search-box">
-                    <svg class="icon icon-sm"><use href="#i-search"></use></svg>
-                    <input type="text" id="leadSearch" placeholder="Search leads…">
+            
+            <div class="scraper-hero-wrapper" id="scraperHero">
+                <div class="hero-greeting" id="heroGreeting">
+                    <h1 id="greetingText">Good morning, Agent!</h1>
+                    <p>Let's discover some high-quality business leads today.</p>
                 </div>
-                <div class="filter-chips">
-                    <button class="filter-chip active" data-filter="all">All</button>
-                    <button class="filter-chip" data-filter="hot"><svg class="icon icon-sm"><use href="#i-flame"/></svg> Priority</button>
-                    <button class="filter-chip" data-filter="top"><svg class="icon icon-sm"><use href="#i-star"/></svg> Rated</button>
-                    <button class="filter-chip" data-filter="phone"><svg class="icon icon-sm"><use href="#i-phone"/></svg> Phone</button>
-                    <button class="filter-chip" data-filter="web"><svg class="icon icon-sm"><use href="#i-globe"/></svg> Website</button>
-                </div>
-            </div>
-            <div class="table-wrap">
-                <table><thead><tr><th>Business</th><th>Phone</th><th>Website</th><th>Email</th><th>Category</th><th>Location</th><th>Rating</th><th>Reviews</th><th>Priority</th><th>Status</th><th>Date</th></tr></thead><tbody id="leadsBody"></tbody></table>
-            </div>
-        </div>
 
-        <!-- TAB: Leads (same view but from DB) -->
-        <div class="tab-panel" id="panel-leads">
-            <div class="stats-row">
-                <div class="stat-card card"><div class="si c1"><svg class="icon"><use href="#i-bar"/></svg></div><div class="stat-info"><div class="label">All Leads</div><div class="value" id="dbTotal">0</div></div></div>
-                <div class="stat-card card"><div class="si c4"><svg class="icon"><use href="#i-phone"/></svg></div><div class="stat-info"><div class="label">Contacted</div><div class="value" id="dbContacted">0</div></div></div>
-                <div class="stat-card card"><div class="si c1"><svg class="icon"><use href="#i-check"/></svg></div><div class="stat-info"><div class="label">Accepted</div><div class="value" id="dbAccepted">0</div></div></div>
-                <div class="stat-card card"><div class="si c2"><svg class="icon"><use href="#i-x"/></svg></div><div class="stat-info"><div class="label">Rejected</div><div class="value" id="dbRejected">0</div></div></div>
-                <div class="stat-card card"><div class="si c3"><svg class="icon"><use href="#i-clock"/></svg></div><div class="stat-info"><div class="label">No Answer</div><div class="value" id="dbNoAnswer">0</div></div></div>
-            </div>
-            <div class="filter-bar">
-                <div class="search-box">
-                    <svg class="icon icon-sm"><use href="#i-search"></use></svg>
-                    <input type="text" id="dbSearch" placeholder="Search database…">
-                </div>
-                <div class="flex-actions" style="display:flex; gap:.5rem;">
-                    <button class="btn btn-ghost btn-sm" id="refreshLeadsBtn" style="width:auto">
-                        <svg class="icon icon-sm"><use href="#i-activity"/></svg> Refresh
-                    </button>
-                    <button class="btn btn-secondary btn-sm" id="exportAllBtn" style="width:auto">
-                        <svg class="icon icon-sm"><use href="#i-file"/></svg> Export All
-                    </button>
-                </div>
-            </div>
-            <div class="table-wrap">
-                <table><thead><tr><th>Business</th><th>Phone</th><th>Agent</th><th>Status</th><th>Tasks Done</th><th>Last Action</th></tr></thead><tbody id="dbLeadsBody"></tbody></table>
-            </div>
-        </div>
-
-        <!-- TAB: My Tasks -->
-        <div class="tab-panel" id="panel-tasks">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
-                <h3 style="font-size:1.1rem; margin:0">My Daily Tasks</h3>
-                <button class="btn btn-primary btn-sm" id="generateAITasksBtn" style="width:auto"><svg class="icon icon-sm"><use href="#i-ai"/></svg> AI Generate Schedule</button>
-            </div>
-            <div class="task-list" id="myTasksList" style="display:grid; gap:.8rem;"></div>
-        </div>
-
-        <!-- TAB: Admin -->
-        <div class="tab-panel" id="panel-admin">
-            <div class="admin-grid">
-                <div class="admin-card card">
-                    <h3><svg class="icon icon-sm"><use href="#i-users"/></svg> Team</h3>
-                    <div class="list" id="agentList"></div>
-                </div>
-                <div class="admin-card card">
-                    <h3><svg class="icon icon-sm"><use href="#i-activity"/></svg> Activity Log</h3>
-                    <div class="list" id="activityLog"></div>
-                </div>
-                <div class="admin-card card" style="grid-column:1/-1">
-                    <h3><svg class="icon icon-sm"><use href="#i-check"/></svg> Task Manager</h3>
-                    <div class="add-task-form" id="addTaskForm">
-                        <input type="text" id="newTaskTitle" placeholder="New task…">
-                        <select id="newTaskAgent"></select>
-                        <button class="btn btn-primary btn-sm" style="width:auto" id="addTaskBtn">Add</button>
+                <div class="wizard-card card" id="wizardCard">
+                    <!-- Title shown when expanded -->
+                    <h2 id="wizardTitle" style="margin-bottom: 1.5rem; font-size: 1.25rem; display:none; opacity:0; transition:opacity 0.4s;">Configure Extraction parameters</h2>
+                    
+                    <div class="wizard-steps" id="wizardSteps" style="display:none; opacity:0; transition:opacity 0.4s;">
+                        <div class="step active" id="wStep1"><div class="step-num">1</div><div class="step-label">Region</div></div>
+                        <div class="step" id="wStep2"><div class="step-num">2</div><div class="step-label">Industry</div></div>
+                        <div class="step" id="wStep3"><div class="step-num">3</div><div class="step-label">Location</div></div>
+                        <div class="step" id="wStep4"><div class="step-num">4</div><div class="step-label">Extract</div></div>
                     </div>
-                    <div class="list" id="adminTasksList"></div>
+
+                    <div class="wizard-panel active" id="wp1">
+                        <div class="form-group" style="text-align: left;">
+                            <label style="font-size: 0.95rem; font-weight: 600; margin-bottom: 0.5rem; display: block;">Select Target Country</label>
+                            <select id="country" style="font-size: 1.05rem; padding: 1rem; border-radius: var(--r);">
+                                <option value="India">India</option>
+                                <option value="USA">United States</option>
+                            </select>
+                        </div>
+                        <button type="button" class="btn btn-primary w-full next-step" data-target="wp2" style="padding: 1rem; font-size: 1.05rem; margin-top: 1rem; border-radius: var(--r);">Continue to configuration &rarr;</button>
+                    </div>
+
+                    <div class="wizard-panel" id="wp2">
+                        <div class="form-group">
+                            <label>Business Category</label>
+                            <select id="category">
+                                <option value="">Select a category...</option>
+                                <optgroup label="Popular">
+                                    <option value="restaurants">Restaurants & Cafes</option>
+                                    <option value="salon">Salons & Spas</option>
+                                    <option value="gym">Gyms & Fitness</option>
+                                    <option value="hotel">Hotels & Resorts</option>
+                                </optgroup>
+                                <optgroup label="Professional">
+                                    <option value="real estate">Real Estate Agencies</option>
+                                    <option value="clinic">Healthcare Clinics</option>
+                                    <option value="school">Educational Institutes</option>
+                                </optgroup>
+                                <optgroup label="Services">
+                                    <option value="plumber">Plumbing Services</option>
+                                    <option value="electrician">Electrical Contractors</option>
+                                    <option value="cleaning">Cleaning Services</option>
+                                    <option value="garage">Automotive Repair</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        <div style="display:flex; gap: 1rem;">
+                            <button type="button" class="btn btn-secondary w-1-2 prev-step" data-target="wp1">Back</button>
+                            <button type="button" class="btn btn-primary w-1-2 next-step" data-target="wp3">Continue</button>
+                        </div>
+                    </div>
+
+                    <div class="wizard-panel" id="wp3">
+                        <div class="form-group">
+                            <label>Target City/State</label>
+                            <select id="location" data-search="true">
+                                <!-- Options populated by JS based on Country -->
+                            </select>
+                        </div>
+                        <div style="display:flex; gap: 1rem;">
+                            <button type="button" class="btn btn-secondary w-1-2 prev-step" data-target="wp2">Back</button>
+                            <button type="button" class="btn btn-primary w-1-2 next-step" data-target="wp4">Continue</button>
+                        </div>
+                    </div>
+
+                    <div class="wizard-panel" id="wp4">
+                        <div class="form-group">
+                            <label>Extraction Volume (10-200)</label>
+                            <input type="number" id="limit" value="50" min="10" max="200">
+                        </div>
+                        <form id="scrapeForm" style="display:flex; gap: 1rem;">
+                            <button type="button" class="btn btn-secondary w-1-2 prev-step" data-target="wp3">Back</button>
+                            <button type="submit" class="btn btn-primary w-1-2" id="searchBtn">
+                                <svg class="icon"><use href="#i-zap"/></svg> Start Extraction
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scraper Progress & Results -->
+            <div id="scraperResultsArea" style="display:none; flex-direction:column; gap:1.5rem;">
+                <div class="progress-container">
+                    <div class="progress-header">
+                        <span id="progressStatus" style="color:var(--accent); font-weight:600;">Extracting Data...</span>
+                        <span><span id="curCount">0</span> / <span id="limTotal">50</span> leads</span>
+                    </div>
+                    <div class="progress-track"><div class="progress-fill" id="progressBar"></div></div>
+                </div>
+
+                <div class="stats-grid" id="scraperStats">
+                    <div class="stat-card card active" data-sf="all">
+                        <div class="stat-icon si-gray"><svg class="icon"><use href="#i-list"/></svg></div>
+                        <div class="stat-info"><div class="label">Total Found</div><div class="value" id="sTotal">0</div></div>
+                    </div>
+                    <div class="stat-card card" data-sf="hot">
+                        <div class="stat-icon si-red"><svg class="icon"><use href="#i-flame"/></svg></div>
+                        <div class="stat-info"><div class="label">Priority (No Web)</div><div class="value" id="sHot">0</div></div>
+                    </div>
+                    <div class="stat-card card" data-sf="top">
+                        <div class="stat-icon si-green"><svg class="icon"><use href="#i-star"/></svg></div>
+                        <div class="stat-info"><div class="label">4.0+ Rated</div><div class="value" id="sTop">0</div></div>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <div class="table-responsive">
+                        <table>
+                            <thead><tr><th>Business</th><th>Phone</th><th>Website</th><th>Category</th><th>Location</th><th>Rating</th><th>Priority</th></tr></thead>
+                            <tbody id="scraperBody">
+                                <!-- Skeleton rows injected via JS when scraping -->
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <!-- TAB: DATABASE (Leads) -->
+        <div class="tab-panel" id="panel-leads">
+            <div class="stats-grid">
+                <div class="stat-card card">
+                    <div class="stat-icon si-gray"><svg class="icon"><use href="#i-list"/></svg></div>
+                    <div class="stat-info"><div class="label">Total Leads</div><div class="value" id="dbTotal">0</div></div>
+                </div>
+                <div class="stat-card card">
+                    <div class="stat-icon si-blue"><svg class="icon"><use href="#i-phone"/></svg></div>
+                    <div class="stat-info"><div class="label">Contacted</div><div class="value" id="dbContacted">0</div></div>
+                </div>
+                <div class="stat-card card">
+                    <div class="stat-icon si-green"><svg class="icon"><use href="#i-check"/></svg></div>
+                    <div class="stat-info"><div class="label">Accepted</div><div class="value" id="dbAccepted">0</div></div>
+                </div>
+                <div class="stat-card card">
+                    <div class="stat-icon si-red"><svg class="icon"><use href="#i-x"/></svg></div>
+                    <div class="stat-info"><div class="label">Rejected</div><div class="value" id="dbRejected">0</div></div>
+                </div>
+            </div>
+
+            <div class="card" style="padding:1.25rem;">
+                <div class="toolbar">
+                    <div class="global-search" style="width:300px;">
+                        <svg class="icon"><use href="#i-search"/></svg>
+                        <input type="text" id="dbSearch" placeholder="Search by name, phone, or agent...">
+                    </div>
+                    <div style="display:flex; gap:0.5rem; align-items:center;">
+                        <button class="btn btn-secondary btn-sm" id="importBtn"><svg class="icon icon-sm"><use href="#i-plus"/></svg> Add Lead</button>
+                        <button class="btn btn-secondary btn-sm" id="refreshBtn"><svg class="icon icon-sm"><use href="#i-refresh"/></svg> Refresh</button>
+                        <button class="btn btn-primary btn-sm" id="exportStudioBtn" style="background: linear-gradient(135deg, #6366f1, #8b5cf6); border:none; box-shadow: 0 2px 8px rgba(99,102,241,0.3);"><svg class="icon icon-sm"><use href="#i-export"/></svg> Export</button>
+                        <!-- Admin-only delete controls -->
+                        <button class="btn btn-secondary btn-sm admin-only" id="selectModeBtn" style="display:none; border-color: var(--warn); color: var(--warn);"><svg class="icon icon-sm"><use href="#i-check-square"/></svg> Select</button>
+                        <button class="btn btn-danger btn-sm admin-only" id="deleteSelectedBtn" style="display:none;"><svg class="icon icon-sm"><use href="#i-trash"/></svg> Delete Selected (<span id="selectedCount">0</span>)</button>
+                    </div>
+                </div>
+
+                <div class="filters" style="margin-top:1.25rem; margin-bottom:1rem;">
+                    <div class="filter-chip active" data-dbf="all">All Statuses</div>
+                    <div class="filter-chip" data-dbf="new">New Leads</div>
+                    <div class="filter-chip" data-dbf="contacted">Contacted</div>
+                    <div class="filter-chip" data-dbf="no_answer">No Answer</div>
+                    <div class="filter-chip" data-dbf="followup">Follow-up</div>
+                </div>
+
+                <div class="table-container">
+                    <div class="table-responsive">
+                        <table id="dbTable">
+                            <thead><tr><th id="checkboxHeader" style="width:40px; display:none;"><input type="checkbox" id="selectAllCheckbox" title="Select All"></th><th>Business</th><th>Phone</th><th>Website</th><th>Category</th><th>Status</th><th>Rating</th><th>Agent</th><th id="deleteColHeader" class="admin-only" style="width:60px; display:none;">Delete</th></tr></thead>
+                            <tbody id="dbLeadsBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB: PIPELINE -->
+        <div class="tab-panel" id="panel-pipeline">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+                <h2 style="font-size:1.25rem;">Deal Pipeline</h2>
+            </div>
+            <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:1rem; flex:1; min-height:0; overflow-x:auto;">
+                <!-- New Leads -->
+                <div class="card" style="background:var(--bg3); display:flex; flex-direction:column;">
+                    <div style="padding:1rem; border-bottom:1px solid var(--border); font-weight:600; display:flex; justify-content:space-between;">
+                        <span>New Leads</span> <span class="badge badge-new" id="plNewCount">0</span>
+                    </div>
+                    <div id="plNew" style="padding:0.75rem; flex:1; overflow-y:auto; display:flex; flex-direction:column; gap:0.5rem;"></div>
+                </div>
+                <!-- In Progress -->
+                <div class="card" style="background:var(--bg3); display:flex; flex-direction:column;">
+                    <div style="padding:1rem; border-bottom:1px solid var(--border); font-weight:600; display:flex; justify-content:space-between;">
+                        <span>In Progress</span> <span class="badge badge-contacted" id="plProgCount">0</span>
+                    </div>
+                    <div id="plProg" style="padding:0.75rem; flex:1; overflow-y:auto; display:flex; flex-direction:column; gap:0.5rem;"></div>
+                </div>
+                <!-- Follow Up -->
+                <div class="card" style="background:var(--bg3); display:flex; flex-direction:column;">
+                    <div style="padding:1rem; border-bottom:1px solid var(--border); font-weight:600; display:flex; justify-content:space-between;">
+                        <span>Follow Up</span> <span class="badge" style="background:#F3E8FF; color:var(--purple);" id="plFollCount">0</span>
+                    </div>
+                    <div id="plFoll" style="padding:0.75rem; flex:1; overflow-y:auto; display:flex; flex-direction:column; gap:0.5rem;"></div>
+                </div>
+                <!-- Closed Won -->
+                <div class="card" style="background:var(--bg3); display:flex; flex-direction:column;">
+                    <div style="padding:1rem; border-bottom:1px solid var(--border); font-weight:600; display:flex; justify-content:space-between;">
+                        <span>Closed Won</span> <span class="badge badge-accepted" id="plWonCount">0</span>
+                    </div>
+                    <div id="plWon" style="padding:0.75rem; flex:1; overflow-y:auto; display:flex; flex-direction:column; gap:0.5rem;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB: MY TASKS -->
+        <div class="tab-panel" id="panel-tasks">
+            <div class="grid-2">
+                <div class="card" style="padding:1.5rem;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
+                        <h2 style="font-size:1.25rem;">Daily Schedule</h2>
+                        <button class="btn btn-primary btn-sm" id="aiScheduleBtn">
+                            <svg class="icon icon-sm"><use href="#i-ai"/></svg> AI Generate Plan
+                        </button>
+                    </div>
+                    <div id="myTasksList" style="display:flex; flex-direction:column; gap:1rem;">
+                        <p style="color:var(--text3); text-align:center; padding:2rem;">Click 'AI Generate Plan' to build your prioritized call list for today.</p>
+                    </div>
+                </div>
+                
+                <div class="card" style="padding:1.5rem;">
+                    <h2 style="font-size:1.25rem; margin-bottom:1.5rem;">My Performance</h2>
+                    <div style="display:flex; flex-direction:column; gap:1.5rem;">
+                        <div>
+                            <div style="display:flex; justify-content:space-between; margin-bottom:0.5rem; font-size:0.85rem;">
+                                <span>Leads Contacted</span> <strong><span id="mpContacted">0</span> / 50 Daily Goal</strong>
+                            </div>
+                            <div class="progress-track"><div class="progress-fill" id="mpBar1" style="width:0%"></div></div>
+                        </div>
+                        <div>
+                            <div style="display:flex; justify-content:space-between; margin-bottom:0.5rem; font-size:0.85rem;">
+                                <span>Conversion Rate</span> <strong><span id="mpConv">0</span>%</strong>
+                            </div>
+                            <div class="progress-track"><div class="progress-fill" id="mpBar2" style="background:var(--success); width:0%"></div></div>
+                        </div>
+                        <div class="ai-box" style="margin-top:1rem;">
+                            <div class="ai-box-header"><svg class="icon icon-sm"><use href="#i-ai"/></svg> Ira's Tip</div>
+                            <div class="ai-summary" style="margin-bottom:0;">Focus on leads marked as "🔥 HIGH" priority. They lack websites and have a 3x higher conversion rate when pitched correctly.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB: CONVERSATIONS (Teams) -->
+        <div class="tab-panel" id="panel-chat">
+            <div class="chat-container">
+                <div class="chat-sidebar">
+                    <div class="chat-header">Conversations</div>
+                    <div class="channel-list">
+                        <div class="channel-category">Channels</div>
+                        <div class="channel-item active" data-chan="general">
+                            <svg class="icon icon-sm channel-icon"><use href="#i-hash"/></svg> General Team
+                        </div>
+                        <div class="channel-item" data-chan="ira_ai">
+                            <svg class="icon icon-sm channel-icon" style="color:var(--purple);"><use href="#i-ai"/></svg> Ira AI Assistant
+                        </div>
+                        <div class="channel-category" style="margin-top:1rem;">Direct Messages</div>
+                        <div id="dmList"></div>
+                    </div>
+                </div>
+                <div class="chat-main">
+                    <div class="chat-titlebar">
+                        <div class="chat-avatar" id="cAvatar">#</div>
+                        <div>
+                            <h3 id="cTitle">General Team</h3>
+                            <p id="cDesc">Company-wide discussion and announcements</p>
+                        </div>
+                    </div>
+                    <div class="chat-encryption-banner">
+                        <svg class="icon"><use href="#i-lock"/></svg> End-to-End Encrypted. Monitored by Ira AI Assistant.
+                    </div>
+                    <div class="chat-messages" id="chatBody"></div>
+                    <div class="chat-input-area">
+                        <div class="chat-input-box">
+                            <textarea id="chatInput" placeholder="Message #general..."></textarea>
+                            <div class="chat-actions">
+                                <button class="btn-icon"><svg class="icon"><use href="#i-paperclip"/></svg></button>
+                                <button class="send-btn" id="sendChatBtn"><svg class="icon icon-sm"><use href="#i-send"/></svg></button>
+                            </div>
+                        </div>
+                        <div style="font-size:0.65rem; color:var(--text3); text-align:center; margin-top:0.5rem;">
+                            <strong>Tip:</strong> Mention <span style="color:var(--purple)">@ira</span> to get AI analysis on your leads.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB: ADMIN -->
+        <div class="tab-panel" id="panel-admin">
+            <div class="stats-grid" style="margin-bottom:0;">
+                <div class="stat-card card">
+                    <div class="stat-icon si-purple"><svg class="icon"><use href="#i-users"/></svg></div>
+                    <div class="stat-info"><div class="label">Total Agents</div><div class="value" id="adAgents">0</div></div>
+                </div>
+                <div class="stat-card card">
+                    <div class="stat-icon si-coral"><svg class="icon"><use href="#i-bar"/></svg></div>
+                    <div class="stat-info"><div class="label">System Leads</div><div class="value" id="adLeads">0</div></div>
+                </div>
+                <div class="stat-card card">
+                    <div class="stat-icon si-green"><svg class="icon"><use href="#i-check"/></svg></div>
+                    <div class="stat-info"><div class="label">Global Conversion</div><div class="value" id="adConv">0%</div></div>
+                </div>
+            </div>
+            
+            <div class="grid-2">
+                <div class="card" style="padding:1.5rem; display:flex; flex-direction:column; max-height:450px;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+                        <h2 style="font-size:1.1rem;">Employee Management</h2>
+                        <button class="btn btn-primary btn-sm" id="addEmpBtn"><svg class="icon icon-sm"><use href="#i-plus"/></svg> Add Employee</button>
+                    </div>
+                    <div class="table-responsive" style="flex:1; overflow-y:auto;">
+                        <table style="min-width:auto;">
+                            <thead><tr><th>Name</th><th>Agent ID</th><th>Passcode</th><th>Role</th><th>Action</th></tr></thead>
+                            <tbody id="agentPerfBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card" style="padding:1.5rem; display:flex; flex-direction:column; max-height:450px;">
+                    <h2 style="font-size:1.1rem; margin-bottom:1rem;">Global Activity Log</h2>
+                    <div id="activityLog" style="flex:1; overflow-y:auto; display:flex; flex-direction:column; gap:0.5rem;"></div>
+                </div>
+            </div>
+        </div>
+
     </main>
 </div>
 
-<!-- ═══ CLIENT DETAIL SLIDE ═══ -->
+<!-- ═══ LEAD DETAIL PANEL (Slide-out) ═══ -->
 <div class="detail-overlay" id="detailOverlay">
     <div class="detail-panel">
         <div class="detail-header">
-            <div><h2 id="dName">–</h2><div class="sub" id="dSub">–</div></div>
+            <div class="detail-header-info">
+                <h2 id="dName">Business Name</h2>
+                <div class="sub"><span id="dCat">Category</span> • <span id="dLoc">Location</span></div>
+            </div>
             <button class="btn-icon" id="closeDetail"><svg class="icon"><use href="#i-x"/></svg></button>
         </div>
+        
         <div class="detail-body">
-            <div class="detail-section">
-                <h4>Contact Info</h4>
-                <div class="detail-grid">
-                    <div class="detail-item"><div class="dl">Phone</div><div id="dPhone">–</div></div>
-                    <div class="detail-item"><div class="dl">Email</div><div id="dEmail">–</div></div>
-                    <div class="detail-item"><div class="dl">Website</div><div id="dWebsite">–</div></div>
-                    <div class="detail-item"><div class="dl">Rating</div><div id="dRating">–</div></div>
-                </div>
-            </div>
-            <div class="detail-section ai-audit">
-                <div class="ai-header">
-                    <svg class="icon ai-icon"><use href="#i-ai"/></svg>
-                    <h4>Ira AI Assistant</h4>
-                </div>
-                <div id="aiAnalysis" class="ai-box">
-                    <div class="ai-skeleton">Analyzing lead data…</div>
-                </div>
-            </div>
-            <div class="detail-section">
-                <h4>Quick Actions</h4>
-                <div class="action-btns">
-                    <button class="action-btn blue" data-action="called"><svg class="icon icon-sm"><use href="#i-phone"/></svg> Called</button>
-                    <button class="action-btn green" data-action="answered"><svg class="icon icon-sm"><use href="#i-check"/></svg> Answered</button>
-                    <button class="action-btn warn" data-action="no_answer"><svg class="icon icon-sm"><use href="#i-clock"/></svg> No Answer</button>
-                    <button class="action-btn green" data-action="accepted"><svg class="icon icon-sm"><use href="#i-check"/></svg> Accepted</button>
-                    <button class="action-btn red" data-action="rejected"><svg class="icon icon-sm"><use href="#i-x"/></svg> Rejected</button>
-                    <button class="action-btn" data-action="followup"><svg class="icon icon-sm"><use href="#i-clock"/></svg> Follow-up</button>
+            <!-- Contact Info -->
+            <div>
+                <div class="section-title"><svg class="icon icon-sm"><use href="#i-user"/></svg> Contact Profile</div>
+                <div class="info-grid">
+                    <div class="info-item"><div class="info-label">Phone</div><div class="info-val td-main" id="dPhone"></div></div>
+                    <div class="info-item"><div class="info-label">Website</div><div class="info-val" id="dWeb"></div></div>
+                    <div class="info-item"><div class="info-label">Email</div><div class="info-val" id="dEmail"></div></div>
+                    <div class="info-item"><div class="info-label">Google Rating</div><div class="info-val" id="dRate"></div></div>
                 </div>
             </div>
 
-            <div class="detail-section">
-                <h4>Notes</h4>
-                <textarea id="dNotes" placeholder="Add notes…"></textarea>
-                <button class="btn btn-ghost btn-sm" id="saveNotes" style="margin-top:.4rem;width:auto">Save</button>
+            <!-- AI Box -->
+            <div class="ai-box" id="dAiBox">
+                <div class="ai-box-header"><svg class="icon"><use href="#i-ai"/></svg> Ira AI Audit</div>
+                <div class="ai-summary" id="dAiSum">Analyzing lead...</div>
             </div>
-            <div class="detail-section">
-                <h4>Action History</h4>
+
+            <!-- Actions -->
+            <div>
+                <div class="section-title"><svg class="icon icon-sm"><use href="#i-zap"/></svg> Quick Actions</div>
+                <div class="action-grid">
+                    <button class="action-btn btn-called" data-action="called"><svg class="icon"><use href="#i-phone"/></svg><span>Called</span></button>
+                    <button class="action-btn btn-answered" data-action="answered"><svg class="icon"><use href="#i-message"/></svg><span>Answered</span></button>
+                    <button class="action-btn btn-no-answer" data-action="no_answer"><svg class="icon"><use href="#i-clock"/></svg><span>No Answer</span></button>
+                    <button class="action-btn btn-accepted" data-action="accepted"><svg class="icon"><use href="#i-check"/></svg><span>Accepted</span></button>
+                    <button class="action-btn btn-rejected" data-action="rejected"><svg class="icon"><use href="#i-x"/></svg><span>Rejected</span></button>
+                    <button class="action-btn btn-followup" data-action="followup"><svg class="icon"><use href="#i-refresh"/></svg><span>Follow-up</span></button>
+                </div>
+            </div>
+
+            <!-- Notes -->
+            <div>
+                <div class="section-title"><svg class="icon icon-sm"><use href="#i-file"/></svg> Agent Notes</div>
+                <textarea id="dNotes" placeholder="Log your call notes here..."></textarea>
+                <div style="display:flex; justify-content:flex-end; margin-top:0.5rem; gap:0.5rem;">
+                    <button class="btn btn-ghost btn-sm" id="btnDeleteLead" style="color:var(--danger); margin-right:auto;">Delete Lead</button>
+                    <button class="btn btn-secondary btn-sm" id="saveNotesBtn">Save Note</button>
+                </div>
+            </div>
+
+            <!-- Timeline -->
+            <div>
+                <div class="section-title"><svg class="icon icon-sm"><use href="#i-list"/></svg> Interaction History</div>
                 <div class="timeline" id="dTimeline"></div>
             </div>
-            
-            <button id="btnDoneDetail" class="btn btn-primary" style="width:100%; margin-top:1rem; margin-bottom: 2rem;">Done</button>
         </div>
     </div>
 </div>
 
-<!-- ═══ MODALS ═══ -->
-<div class="modal-overlay" id="catModal">
-    <div class="modal-panel">
-        <div class="modal-header"><h3>Category</h3><button class="modal-close" data-close="catModal"><svg class="icon"><use href="#i-x"/></svg></button></div>
-        <input class="modal-search" placeholder="Search…" data-search="catModal">
-        <div class="modal-list" data-target="category" data-trigger="catTrigger">
-            <div class="modal-list-group">Popular</div>
-            <div class="modal-option" data-value="restaurants">Restaurants</div>
-            <div class="modal-option" data-value="cafe">Cafe</div>
-            <div class="modal-option" data-value="salon">Salon & Spa</div>
-            <div class="modal-option" data-value="gym">Gym</div>
-            <div class="modal-option" data-value="hotel">Hotels</div>
-            <div class="modal-list-group">Professional</div>
-            <div class="modal-option" data-value="real estate">Real Estate</div>
-            <div class="modal-option" data-value="clinic">Healthcare</div>
-            <div class="modal-option" data-value="school">Education</div>
-            <div class="modal-option" data-value="agency">Agency</div>
-            <div class="modal-list-group">Services</div>
-            <div class="modal-option" data-value="plumber">Plumber</div>
-            <div class="modal-option" data-value="electrician">Electrician</div>
-            <div class="modal-option" data-value="contractor">Contractor</div>
-            <div class="modal-option" data-value="cleaning">Cleaning</div>
-            <div class="modal-option" data-value="garage">Automotive</div>
+<!-- ═══ EXPORT STUDIO MODAL ═══ -->
+<div class="modal-overlay" id="exportStudioModal">
+    <div class="modal" style="max-width:560px; border-radius:16px; overflow:hidden;">
+        <!-- Header -->
+        <div style="background: linear-gradient(135deg, #6366f1, #8b5cf6); padding: 1.5rem; color:white;">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                    <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.25rem;">
+                        <svg class="icon" style="width:22px;height:22px;"><use href="#i-export"/></svg>
+                        <h3 style="font-size:1.2rem; font-weight:700; margin:0;">Export Studio</h3>
+                    </div>
+                    <p style="margin:0; font-size:0.8rem; opacity:0.85;">Generate a professional PDF report of your leads</p>
+                </div>
+                <button class="btn-icon modal-close" data-target="exportStudioModal" style="color:white; background:rgba(255,255,255,0.15); border-radius:8px; padding:0.4rem;"><svg class="icon"><use href="#i-x"/></svg></button>
+            </div>
         </div>
-    </div>
-</div>
-<div class="modal-overlay" id="locModal">
-    <div class="modal-panel">
-        <div class="modal-header"><h3>Location</h3><button class="modal-close" data-close="locModal"><svg class="icon"><use href="#i-x"/></svg></button></div>
-        <input class="modal-search" placeholder="Search…" data-search="locModal">
-        <div class="modal-list" data-target="location" data-trigger="locTrigger">
-            <div class="modal-list-group">India</div>
-            <div class="modal-option" data-value="Mumbai">Mumbai</div>
-            <div class="modal-option" data-value="Delhi">Delhi</div>
-            <div class="modal-option" data-value="Bangalore">Bangalore</div>
-            <div class="modal-option" data-value="Hyderabad">Hyderabad</div>
-            <div class="modal-option" data-value="Chennai">Chennai</div>
-            <div class="modal-option" data-value="Pune">Pune</div>
-            <div class="modal-option" data-value="Kolkata">Kolkata</div>
-            <div class="modal-list-group">USA</div>
-            <div class="modal-option" data-value="New York">New York</div>
-            <div class="modal-option" data-value="Los Angeles">Los Angeles</div>
-            <div class="modal-option" data-value="Chicago">Chicago</div>
-            <div class="modal-option" data-value="Dallas">Dallas</div>
-            <div class="modal-option" data-value="Miami">Miami</div>
-        </div>
-    </div>
-</div>
+        <div class="modal-body" style="padding:1.5rem; display:flex; flex-direction:column; gap:1.25rem;">
 
-<!-- Full Teams Collaborative Workspace -->
-<div class="chat-overlay" id="chatSidebar">
-    <!-- Left Icon Rail -->
-    <div class="teams-rail">
-        <div class="rail-item active"><svg class="icon"><use href="#i-message"/></svg><span>Chat</span></div>
-        <div class="rail-item"><svg class="icon"><use href="#i-users"/></svg><span>Teams</span></div>
-        <div class="rail-item"><svg class="icon"><use href="#i-activity"/></svg><span>Activity</span></div>
-        <div class="rail-item" style="margin-top:auto" id="closeChat"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg><span>Close</span></div>
-    </div>
+            <!-- Report Title -->
+            <div class="form-group" style="margin:0;">
+                <label style="font-weight:600; font-size:0.8rem; color:#6366f1;">REPORT TITLE</label>
+                <input type="text" id="exportTitle" placeholder="e.g. Q2 Lead Report — Restaurants" style="margin-top:0.4rem;">
+            </div>
 
-    <!-- People Sidebar -->
-    <div class="teams-sidebar">
-        <div class="sidebar-header">
-            <h2>Chat</h2>
-            <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-        </div>
-        <div class="people-list">
-            <div class="person-item active">
-                <div class="p-avatar" style="background:#6264a7">IA</div>
-                <div><strong>Ira AI Assistant</strong><p style="font-size:.7rem;color:#8a8886">Online</p></div>
-            </div>
-            <div class="person-item">
-                <div class="p-avatar">PS</div>
-                <div><strong>Pawan Shiva</strong><p style="font-size:.7rem;color:#8a8886">Last seen 12:40</p></div>
-            </div>
-            <div class="person-item">
-                <div class="p-avatar">SB</div>
-                <div><strong>Satvika Bandaru</strong><p style="font-size:.7rem;color:#8a8886">Away</p></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Main Chat Stage -->
-    <div class="teams-stage">
-        <div class="stage-header">
-            <div class="user-info">
-                <div class="p-avatar">IA</div>
-                <h3>Team General Discussion</h3>
-            </div>
-            <div class="input-actions" style="color:#adadad">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15.05 5A5 5 0 0 1 19 8.95M15.05 1A9 9 0 0 1 23 8.94m-1 7.98v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
-            </div>
-        </div>
-        <div class="chat-body" id="chatBody"></div>
-        <div class="chat-footer">
-            <div class="input-area">
-                <textarea id="chatInput" placeholder="Type a message or ask Ira AI..." rows="1"></textarea>
-                <div class="input-actions">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
-                    <button id="sendChat" style="background:none;border:none;color:#6264a7;cursor:pointer">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-                    </button>
+            <!-- Scope Selector -->
+            <div>
+                <label style="font-weight:600; font-size:0.8rem; color:var(--text3); display:block; margin-bottom:0.75rem;">EXPORT SCOPE</label>
+                <div id="exportScopeCards" style="display:grid; grid-template-columns: repeat(3,1fr); gap:0.6rem;">
+                    <label class="export-scope-card active" data-scope="all" for="scope_all">
+                        <input type="radio" id="scope_all" name="exportScope" value="all" checked style="display:none;">
+                        <div class="scope-icon"><svg class="icon" style="color:#6366f1"><use href="#i-list"/></svg></div>
+                        <div class="scope-label">All Leads</div>
+                        <div class="scope-count" id="scopeCountAll">0</div>
+                    </label>
+                    <label class="export-scope-card" data-scope="filtered" for="scope_filtered">
+                        <input type="radio" id="scope_filtered" name="exportScope" value="filtered" style="display:none;">
+                        <div class="scope-icon"><svg class="icon" style="color:#0ea5e9"><use href="#i-search"/></svg></div>
+                        <div class="scope-label">Current View</div>
+                        <div class="scope-count" id="scopeCountFiltered">0</div>
+                    </label>
+                    <label class="export-scope-card" data-scope="selected" for="scope_selected" id="scopeCardSelected">
+                        <input type="radio" id="scope_selected" name="exportScope" value="selected" style="display:none;">
+                        <div class="scope-icon"><svg class="icon" style="color:#d97757"><use href="#i-check-square"/></svg></div>
+                        <div class="scope-label">Selected</div>
+                        <div class="scope-count" id="scopeCountSelected">0</div>
+                    </label>
                 </div>
             </div>
+
+            <!-- Column Selector -->
+            <div>
+                <label style="font-weight:600; font-size:0.8rem; color:var(--text3); display:block; margin-bottom:0.75rem;">COLUMNS TO INCLUDE</label>
+                <div style="display:flex; flex-wrap:wrap; gap:0.5rem;" id="columnSelector">
+                    <label class="col-toggle active"><input type="checkbox" value="business_name" checked> Business Name</label>
+                    <label class="col-toggle active"><input type="checkbox" value="phone" checked> Phone</label>
+                    <label class="col-toggle active"><input type="checkbox" value="website" checked> Website</label>
+                    <label class="col-toggle active"><input type="checkbox" value="category" checked> Category</label>
+                    <label class="col-toggle active"><input type="checkbox" value="location" checked> Location</label>
+                    <label class="col-toggle active"><input type="checkbox" value="rating" checked> Rating</label>
+                    <label class="col-toggle active"><input type="checkbox" value="client_status" checked> Status</label>
+                    <label class="col-toggle"><input type="checkbox" value="agent"> Agent</label>
+                    <label class="col-toggle"><input type="checkbox" value="notes"> Notes</label>
+                </div>
+            </div>
+
+            <!-- Format Options -->
+            <div style="display:flex; gap:1rem;">
+                <div style="flex:1;">
+                    <label style="font-weight:600; font-size:0.8rem; color:var(--text3); display:block; margin-bottom:0.5rem;">ORIENTATION</label>
+                    <select id="exportOrientation">
+                        <option value="l">Landscape (Recommended)</option>
+                        <option value="p">Portrait</option>
+                    </select>
+                </div>
+                <div style="flex:1;">
+                    <label style="font-weight:600; font-size:0.8rem; color:var(--text3); display:block; margin-bottom:0.5rem;">THEME</label>
+                    <select id="exportTheme">
+                        <option value="coral">Coral (Default)</option>
+                        <option value="indigo">Indigo</option>
+                        <option value="teal">Teal</option>
+                        <option value="dark">Dark Pro</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Email Softcopy Section -->
+            <div style="background: linear-gradient(135deg, #f0fdf4, #dcfce7); border:1px solid #86efac; border-radius:10px; padding:1rem;">
+                <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.6rem;">
+                    <svg class="icon icon-sm" style="color:#16a34a;"><use href="#i-mail"/></svg>
+                    <span style="font-weight:600; font-size:0.82rem; color:#15803d;">EMAIL A SOFTCOPY</span>
+                    <span style="font-size:0.72rem; color:#16a34a; margin-left:auto; background:#bbf7d0; padding:0.15rem 0.5rem; border-radius:10px;">Optional</span>
+                </div>
+                <div style="position:relative;">
+                    <input type="email" id="exportEmailInput" placeholder="e.g. vanapalligowtham890@gmail.com" list="rememberedEmailsList" style="padding-right:2.5rem; font-size:0.85rem;" autocomplete="email">
+                    <datalist id="rememberedEmailsList"></datalist>
+                    <svg class="icon icon-sm" style="position:absolute; right:0.8rem; top:50%; transform:translateY(-50%); color:var(--text3); pointer-events:none;"><use href="#i-mail"/></svg>
+                </div>
+                <div id="rememberedEmailChips" style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:0.6rem;"></div>
+            </div>
+
+            <!-- Preview Info -->
+            <div id="exportPreviewBar" style="background: linear-gradient(135deg, #f0f9ff, #e0f2fe); border:1px solid #bae6fd; border-radius:10px; padding:0.85rem 1rem; display:flex; justify-content:space-between; align-items:center; font-size:0.82rem;">
+                <span id="exportPreviewText" style="color:#0369a1; font-weight:500;">Ready to export</span>
+                <span id="exportPreviewCount" style="background:#0ea5e9; color:white; padding:0.2rem 0.6rem; border-radius:20px; font-weight:700; font-size:0.75rem;">0 leads</span>
+            </div>
+
+            <!-- Action Buttons -->
+            <div style="display:flex; gap:0.75rem; padding-top:0.25rem;">
+                <button class="btn btn-secondary" style="flex:1; min-width:0;" id="exportCancelBtn">Cancel</button>
+                <button class="btn" id="exportEmailBtn" style="flex:1.2; min-width:0; background: linear-gradient(135deg, #16a34a, #15803d); color:white; font-weight:600; font-size:0.82rem; box-shadow:0 4px 12px rgba(22,163,74,0.25);">
+                    <svg class="icon icon-sm"><use href="#i-mail"/></svg> Send Email
+                </button>
+                <button class="btn" id="exportGenerateBtn" style="flex:1.5; min-width:0; background: linear-gradient(135deg, #6366f1, #8b5cf6); color:white; font-weight:600; font-size:0.85rem; box-shadow:0 4px 12px rgba(99,102,241,0.3);">
+                    <svg class="icon icon-sm"><use href="#i-export"/></svg> Download PDF
+                </button>
+            </div>
         </div>
     </div>
 </div>
 
-<button class="chat-toggle" id="toggleChat">
-    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-</button>
 
-<div id="toast"></div>
+<!-- ═══ ADD LEAD MODAL ═══ -->
+<div class="modal-overlay" id="addLeadModal">
+    <div class="modal">
+        <div class="modal-header">
+            <h3>Add Manual Lead</h3>
+            <button class="btn-icon modal-close" data-target="addLeadModal"><svg class="icon"><use href="#i-x"/></svg></button>
+        </div>
+        <div class="modal-body">
+            <form id="addLeadForm">
+                <div class="form-group"><label>Business Name*</label><input type="text" id="mName" required></div>
+                <div class="form-group"><label>Phone Number</label><input type="text" id="mPhone"></div>
+                <div class="form-group"><label>Website</label><input type="text" id="mWeb" placeholder="https://..."></div>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+                    <div class="form-group"><label>Category</label><input type="text" id="mCat" value="Manual Entry"></div>
+                    <div class="form-group"><label>Location</label><input type="text" id="mLoc"></div>
+                </div>
+                <button type="submit" class="btn btn-primary w-full" style="margin-top:1rem;">Save Lead</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- ═══ ADD EMPLOYEE MODAL ═══ -->
+<div class="modal-overlay" id="addEmpModal">
+    <div class="modal">
+        <div class="modal-header">
+            <h3>Add New Employee</h3>
+            <button class="btn-icon modal-close" data-target="addEmpModal"><svg class="icon"><use href="#i-x"/></svg></button>
+        </div>
+        <div class="modal-body">
+            <form id="addEmpForm">
+                <div class="form-group"><label>Agent Name*</label><input type="text" id="eName" required></div>
+                <div class="form-group"><label>Agent ID (Phone Number)*</label><input type="text" id="eId" required></div>
+                <div class="form-group"><label>Passcode*</label><input type="text" id="ePass" required></div>
+                <div class="form-group">
+                    <label>Role</label>
+                    <select id="eRole">
+                        <option value="agent">Agent</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary w-full" style="margin-top:1rem;">Create Employee</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- ═══ CUSTOM CONFIRM MODAL ═══ -->
+<div class="modal-overlay" id="confirmModal">
+    <div class="modal" style="max-width:420px;">
+        <div class="modal-header">
+            <h3 id="confirmTitle">Confirm</h3>
+        </div>
+        <div class="modal-body">
+            <p id="confirmMsg" style="color:var(--text2); line-height:1.6; margin-bottom:1.5rem;"></p>
+            <div style="display:flex; gap:0.75rem; justify-content:flex-end;">
+                <button class="btn btn-secondary" id="confirmCancelBtn">Cancel</button>
+                <button class="btn btn-primary" id="confirmOkBtn">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="toast-container"></div>
 
 <!-- ═══ SVG SPRITE ═══ -->
 <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
-    <symbol id="i-bar" viewBox="0 0 24 24"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></symbol>
+    <symbol id="i-zap" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></symbol>
+    <symbol id="i-board" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></symbol>
+    <symbol id="i-message" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
+    <symbol id="i-logout" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+    <symbol id="i-ai" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="10" r="1.5"/><circle cx="15.5" cy="10" r="1.5"/><path d="M8 15h8"/></symbol>
     <symbol id="i-flame" viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0011 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 11-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 002.5 2.5z"/></symbol>
     <symbol id="i-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol>
-    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></symbol>
-    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></symbol>
-    <symbol id="i-right" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol>
-    <symbol id="i-down" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></symbol>
-    <symbol id="i-x" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
-    <symbol id="i-logout" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></symbol>
-    <symbol id="i-zap" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
-    <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></symbol>
-    <symbol id="i-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></symbol>
-    <symbol id="i-list" viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></symbol>
-    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
     <symbol id="i-users" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></symbol>
-    <symbol id="i-activity" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></symbol>
-    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
-    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></symbol>
-    <symbol id="i-message" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></symbol>
-    <symbol id="i-ai" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></symbol>
+    <symbol id="i-bar" viewBox="0 0 24 24"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></symbol>
+    <symbol id="i-hash" viewBox="0 0 24 24"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/></symbol>
+    <symbol id="i-paperclip" viewBox="0 0 24 24"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/></symbol>
+    <symbol id="i-check-square" viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></symbol>
+    <symbol id="i-export" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></symbol>
 </svg>
 
 <script src="/static/js/main.js"></script>

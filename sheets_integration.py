@@ -6,10 +6,10 @@ class SheetsService:
     def __init__(self):
         self.scopes = ['https://www.googleapis.com/auth/spreadsheets']
         self.service = None
-        self.spreadsheet_id = None
+        self.spreadsheet_id = os.environ.get('SHEETS_SPREADSHEET_ID', '')
         
-        # We manually construct the key with real newlines to avoid escaping issues
-        raw_key = ("MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC8G4e7UpJdLHpl"
+        # Fallback raw key if not in ENV
+        default_raw_key = ("MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC8G4e7UpJdLHpl"
                    "+arKyKbhEuqaaJGNNCMODei1QwQS71DjSGZcEIe3X6I5DwxqdPCZBzZaj84fsEwl"
                    "bGz+C7Os0P7zuOtOrhgbp4e2t1CcWltlmy8FpmzIzSL9OSGKIsY9kIbOaSnu7EoX"
                    "FdWrxSS1mCsROVD2na2lMDK9dNSjFr342m5mN+VJgTnRqNDW0krWztMSBCsNlKBN"
@@ -36,14 +36,18 @@ class SheetsService:
                    "zPq6KdrdVrehnyBJST43fBvxzSElOHdbEfobmXyHy5aPcbM3eVnJGTOGm0nA4Jua"
                    "Zk42p6ki6NZmvhffg7LWq+0=")
         
+        raw_key = os.environ.get('GOOGLE_PRIVATE_KEY', default_raw_key)
+        client_email = os.environ.get('GOOGLE_CLIENT_EMAIL', 'lead-matrix-pro@lead-matrix-pro.iam.gserviceaccount.com')
+        project_id = os.environ.get('GOOGLE_PROJECT_ID', 'lead-matrix-pro')
+        
         # Reconstruct the PEM format correctly
         pem_key = f"-----BEGIN PRIVATE KEY-----\n{raw_key}\n-----END PRIVATE KEY-----\n"
         
         info = {
             "type": "service_account",
-            "project_id": "lead-matrix-pro",
+            "project_id": project_id,
             "private_key": pem_key,
-            "client_email": "lead-matrix-pro@lead-matrix-pro.iam.gserviceaccount.com",
+            "client_email": client_email,
             "token_uri": "https://oauth2.googleapis.com/token"
         }
 
@@ -56,7 +60,6 @@ class SheetsService:
     def set_spreadsheet_id(self, url_or_id):
         if not url_or_id:
             return
-        # Extract ID from URL if necessary
         if 'docs.google.com/spreadsheets/d/' in url_or_id:
             self.spreadsheet_id = url_or_id.split('/d/')[1].split('/')[0]
         else:
@@ -78,12 +81,11 @@ class SheetsService:
                     'Location', 'Rating', 'Reviews', 'Priority', 'Agent', 
                     'Status', 'Last Contact', 'Notes'
                 ]
-                # Write headers
                 self.service.spreadsheets().values().update(
                     spreadsheetId=self.spreadsheet_id, range='Sheet1!A1',
                     valueInputOption='RAW', body={'values': [headers]}).execute()
                 
-                # Apply professional formatting to headers
+                # Apply Claude-style formatting to headers
                 self.service.spreadsheets().batchUpdate(spreadsheetId=self.spreadsheet_id, body={
                     "requests": [
                         {
@@ -91,7 +93,8 @@ class SheetsService:
                                 "range": {"sheetId": 0, "startRowIndex": 0, "endRowIndex": 1},
                                 "cell": {
                                     "userEnteredFormat": {
-                                        "backgroundColor": {"red": 0.05, "green": 0.1, "blue": 0.2},
+                                        # Claude Coral color (#D97757) -> RGB (217, 119, 87) -> (0.85, 0.46, 0.34)
+                                        "backgroundColor": {"red": 0.85, "green": 0.46, "blue": 0.34},
                                         "textFormat": {"foregroundColor": {"red": 1, "green": 1, "blue": 1}, "bold": True},
                                         "horizontalAlignment": "CENTER"
                                     }
@@ -124,7 +127,7 @@ class SheetsService:
                 spreadsheetId=self.spreadsheet_id, range='Sheet1!A1',
                 valueInputOption='RAW', body={'values': values}).execute()
             
-            # Auto-resize all columns
+            # Auto-resize columns
             self.service.spreadsheets().batchUpdate(spreadsheetId=self.spreadsheet_id, body={
                 "requests": [{"autoResizeDimensions": {"dimensions": {"sheetId": 0, "dimension": "COLUMNS", "startIndex": 0, "endIndex": 13}}}]
             }).execute()
