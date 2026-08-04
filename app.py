@@ -910,8 +910,14 @@ def save_remembered_email():
 
 
 if __name__ == '__main__':
-    import webbrowser, threading
-    port = int(os.environ.get('FLASK_PORT', 5001))
-    threading.Timer(1.5, lambda: webbrowser.open(f"http://127.0.0.1:{port}")).start()
-    app.run(debug=True, port=port, use_reloader=False)
+    port = int(os.environ.get('PORT', 5001))
+    
+    # If FLASK_ENV is set to development, run locally with debug and browser
+    if os.environ.get('FLASK_ENV') == 'development':
+        import webbrowser, threading
+        threading.Timer(1.5, lambda: webbrowser.open(f"http://127.0.0.1:{port}")).start()
+        app.run(host='127.0.0.1', port=port, debug=True, use_reloader=False)
+    else:
+        # Production Web Mode
+        app.run(host='0.0.0.0', port=port, debug=False)
 
