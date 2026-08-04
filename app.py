@@ -70,8 +70,11 @@ def save_db(db):
     os.replace(tmp_path, DB_PATH)
 
 # ── Pages ──
-@app.route('/')
-def serve_index():
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def serve_index(path):
+    if path.startswith('api/'):
+        return jsonify({"error": "Not found"}), 404
     return send_from_directory('static', 'index.html')
 
 # ── Auth ──
@@ -93,6 +96,8 @@ def api_scrape_stream():
     country = request.args.get('country', 'India')
     limit = int(request.args.get('limit', 20))
     agent = request.args.get('agent', 'unknown')
+    lead_type = request.args.get('leadType', 'all')
+    skip_count = int(request.args.get('skip', 0))
 
     if not category or not location:
         return jsonify({"error": "Location and category are required"}), 400
@@ -101,7 +106,7 @@ def api_scrape_stream():
         scraper = GoogleMapsScraper()
         try:
             scraper.setup_driver()
-            for lead in scraper.extract_business_details(location, category, country, limit):
+            for lead in scraper.extract_business_details(location, category, country, limit, lead_type, skip_count):
                 # Duplicate Check
                 db = load_db()
                 existing = next((l for l in db['leads'] if l.get('phone') == lead.get('phone') and l.get('phone') != 'N/A'), None)
@@ -302,6 +307,8 @@ def add_lead():
         'country': data.get('country', 'India'),
         'rating': data.get('rating', 'N/A'),
         'reviews': data.get('reviews', 'N/A'),
+        'photo_url': data.get('photo_url', ''),
+        'full_address': data.get('full_address', 'N/A'),
         'priority': '🔥 HIGH' if data.get('website', 'N/A') == 'N/A' else '🟡 MEDIUM',
         'has_website': 'No' if data.get('website', 'N/A') == 'N/A' else 'Yes',
         'date_scraped': datetime.now().strftime('%Y-%m-%d'),
@@ -904,7 +911,7 @@ def save_remembered_email():
 
 if __name__ == '__main__':
     import webbrowser, threading
-    port = int(os.environ.get('FLASK_PORT', 5000))
+    port = int(os.environ.get('FLASK_PORT', 5001))
     threading.Timer(1.5, lambda: webbrowser.open(f"http://127.0.0.1:{port}")).start()
     app.run(debug=True, port=port, use_reloader=False)
 

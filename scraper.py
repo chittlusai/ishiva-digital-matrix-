@@ -72,16 +72,21 @@ class GoogleMapsScraper:
         search_url = f"https://www.google.com/maps/search/{search_query}"
         print(f"[*] Searching: {search_url}")
         self.driver.get(search_url)
-        time.sleep(random.uniform(4, 6))
+        try:
+            WebDriverWait(self.driver, 6).until(
+                EC.presence_of_element_located((By.CSS_SELECTOR, ".Nv2PK, div[role='feed']"))
+            )
+        except TimeoutException:
+            time.sleep(2)
 
-    def extract_business_details(self, location, category, country, limit=20):
+    def extract_business_details(self, location, category, country, limit=20, lead_type="all", skip_count=0):
         """Streaming generator that yields leads as they are found"""
+        found_count = 0
         try:
             yield {"status": f"Searching for {category} in {location}..."}
             self.search_google_maps(category, location)
             
             extracted_names = set()
-            found_count = 0
             scroll_attempts = 0
             max_scroll_attempts = 40 # High limit support
             
@@ -113,20 +118,53 @@ class GoogleMapsScraper:
                         if name in extracted_names: continue
                         extracted_names.add(name)
                         
+                        if skip_count > 0:
+                            skip_count -= 1
+                            continue
+
+                        
                         lead = {
                             "business_name": name, "category": category, "location": location,
                             "country": country, "date_scraped": datetime.now().strftime("%Y-%m-%d"),
                             "phone": "N/A", "website": "N/A", "email": "N/A",
-                            "rating": "N/A", "reviews": "N/A", "hours": "N/A"
+                            "rating": "N/A", "reviews": "N/A", "hours": "N/A",
+                            "photo_url": "", "full_address": "N/A"
                         }
                         
                         if href:
                             self.driver.execute_script("window.open(arguments[0], '_blank');", href)
                             self.driver.switch_to.window(self.driver.window_handles[-1])
-                            time.sleep(random.uniform(1.5, 2.5))
+                            try:
+                                WebDriverWait(self.driver, 3).until(
+                                    EC.presence_of_element_located((By.TAG_NAME, "h1"))
+                                )
+                                time.sleep(0.2)
+                            except TimeoutException:
+                                pass
                             
                             try:
                                 body_src = self.driver.find_element(By.TAG_NAME, "body").text.replace('\n', ' ')
+                                
+                                try:
+                                    img_nodes = self.driver.find_elements(By.TAG_NAME, "img")
+                                    for img in img_nodes:
+                                        src = img.get_attribute("src")
+                                        if not src: continue
+                                        if 'googleusercontent' in src:
+                                            # Skip small icons, maps, and avatars
+                                            if any(x in src for x in ['=s120', 'w36-h36', 'w32-h32', 'staticmap', 'StreetView']):
+                                                continue
+                                            lead['photo_url'] = src
+                                            break
+                                except: pass
+
+                                try:
+                                    addr_btns = self.driver.find_elements(By.CSS_SELECTOR, "button[data-item-id='address']")
+                                    if addr_btns:
+                                        txt = addr_btns[0].get_attribute('aria-label') or addr_btns[0].text
+                                        lead['full_address'] = txt.replace('Address: ', '').replace('Address ', '').strip()
+                                except: pass
+                                
                                 try:
                                     web_node = self.driver.find_element(By.CSS_SELECTOR, "a[data-item-id='authority']")
                                     lead['website'] = web_node.get_attribute("href")
@@ -160,6 +198,15 @@ class GoogleMapsScraper:
                         lead['lead_status'] = "New Lead"
                         lead['notes'] = ""
                         
+                        
+                        # Apply lead type filter
+                        is_premium = lead['has_website'] == "Yes" and lead['rating'] != "N/A" and float(lead['rating']) >= 4.0
+                        
+                        if lead_type == "premium" and not is_premium:
+                            continue
+                        elif lead_type == "non_premium" and is_premium:
+                            continue
+
                         found_count += 1
                         yield {"status": f"Extracted {found_count}/{limit} leads..."}
                         yield lead
@@ -202,8 +249,11 @@ if __name__ == "__main__":
     try:
         results = []
         for lead in scraper.extract_business_details("Bangalore", "Restaurants", "India", 5):
-            results.append(lead)
-            print(f"   [Streaming] Found: {lead['business_name']}")
+            if "status" in lead:
+                print(f"   [Status] {lead['status']}")
+            else:
+                results.append(lead)
+                print(f"   [Streaming] Found: {lead.get('business_name', 'N/A')}")
         scraper.save_to_csv(results)
     finally:
         scraper.driver.quit()

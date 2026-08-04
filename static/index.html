@@ -107,6 +107,9 @@
             <button class="btn-icon" id="notificationBtn">
                 <svg class="icon"><use href="#i-bell"/></svg>
             </button>
+            <button class="btn-icon mobile-logout-btn" id="mobileLogoutBtn" title="Sign Out" style="display: none; color: var(--danger);">
+                <svg class="icon"><use href="#i-logout"/></svg>
+            </button>
             <button id="pdfBtn" class="btn btn-primary btn-sm" disabled style="display:none">
                 <svg class="icon icon-sm"><use href="#i-file"/></svg> Export PDF
             </button>
@@ -192,6 +195,14 @@
 
                     <div class="wizard-panel" id="wp4">
                         <div class="form-group">
+                            <label>Lead Type</label>
+                            <select id="leadType">
+                                <option value="all">All Leads</option>
+                                <option value="premium">Premium Leads (Web & 4.0+ Rating)</option>
+                                <option value="non_premium">Non-Premium (No Web)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label>Extraction Volume (10-200)</label>
                             <input type="number" id="limit" value="50" min="10" max="200">
                         </div>
@@ -213,6 +224,11 @@
                         <span><span id="curCount">0</span> / <span id="limTotal">50</span> leads</span>
                     </div>
                     <div class="progress-track"><div class="progress-fill" id="progressBar"></div></div>
+                    <div style="display:flex; gap: 0.5rem; margin-top: 1rem;" id="scraperControls">
+                        <button type="button" class="btn btn-secondary" id="btnPauseScrape" style="flex:1">Pause</button>
+                        <button type="button" class="btn btn-primary" id="btnContinueScrape" style="flex:1; display:none;">Continue</button>
+                        <button type="button" class="btn" id="btnClearScrape" style="flex:1; background:var(--bg3); color:var(--fg1)">Clear New Leads</button>
+                    </div>
                 </div>
 
                 <div class="stats-grid" id="scraperStats">
@@ -266,11 +282,11 @@
 
             <div class="card" style="padding:1.25rem;">
                 <div class="toolbar">
-                    <div class="global-search" style="width:300px;">
+                    <div class="global-search db-search-wrapper">
                         <svg class="icon"><use href="#i-search"/></svg>
                         <input type="text" id="dbSearch" placeholder="Search by name, phone, or agent...">
                     </div>
-                    <div style="display:flex; gap:0.5rem; align-items:center;">
+                    <div style="display:flex; gap:0.5rem; align-items:center; flex-wrap: wrap;">
                         <button class="btn btn-secondary btn-sm" id="importBtn"><svg class="icon icon-sm"><use href="#i-plus"/></svg> Add Lead</button>
                         <button class="btn btn-secondary btn-sm" id="refreshBtn"><svg class="icon icon-sm"><use href="#i-refresh"/></svg> Refresh</button>
                         <button class="btn btn-primary btn-sm" id="exportStudioBtn" style="background: linear-gradient(135deg, #6366f1, #8b5cf6); border:none; box-shadow: 0 2px 8px rgba(99,102,241,0.3);"><svg class="icon icon-sm"><use href="#i-export"/></svg> Export</button>
@@ -304,23 +320,23 @@
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
                 <h2 style="font-size:1.25rem;">Deal Pipeline</h2>
             </div>
-            <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:1rem; flex:1; min-height:0; overflow-x:auto;">
+            <div class="pipeline-board-container">
                 <!-- New Leads -->
-                <div class="card" style="background:var(--bg3); display:flex; flex-direction:column;">
+                <div class="card pipeline-col">
                     <div style="padding:1rem; border-bottom:1px solid var(--border); font-weight:600; display:flex; justify-content:space-between;">
                         <span>New Leads</span> <span class="badge badge-new" id="plNewCount">0</span>
                     </div>
                     <div id="plNew" style="padding:0.75rem; flex:1; overflow-y:auto; display:flex; flex-direction:column; gap:0.5rem;"></div>
                 </div>
                 <!-- In Progress -->
-                <div class="card" style="background:var(--bg3); display:flex; flex-direction:column;">
+                <div class="card pipeline-col">
                     <div style="padding:1rem; border-bottom:1px solid var(--border); font-weight:600; display:flex; justify-content:space-between;">
                         <span>In Progress</span> <span class="badge badge-contacted" id="plProgCount">0</span>
                     </div>
                     <div id="plProg" style="padding:0.75rem; flex:1; overflow-y:auto; display:flex; flex-direction:column; gap:0.5rem;"></div>
                 </div>
                 <!-- Follow Up -->
-                <div class="card" style="background:var(--bg3); display:flex; flex-direction:column;">
+                <div class="card pipeline-col">
                     <div style="padding:1rem; border-bottom:1px solid var(--border); font-weight:600; display:flex; justify-content:space-between;">
                         <span>Follow Up</span> <span class="badge" style="background:#F3E8FF; color:var(--purple);" id="plFollCount">0</span>
                     </div>
@@ -480,7 +496,13 @@
                     <div class="info-item"><div class="info-label">Website</div><div class="info-val" id="dWeb"></div></div>
                     <div class="info-item"><div class="info-label">Email</div><div class="info-val" id="dEmail"></div></div>
                     <div class="info-item"><div class="info-label">Google Rating</div><div class="info-val" id="dRate"></div></div>
+                    <div class="info-item" style="grid-column: 1 / -1;"><div class="info-label">Full Address</div><div class="info-val" id="dAddress" style="white-space: normal;">N/A</div></div>
                 </div>
+            </div>
+
+            <!-- Business Photo -->
+            <div id="dPhotoContainer" style="display:none; margin-bottom:1.5rem; width:100%; border-radius:var(--r); overflow:hidden; background:var(--bg2);">
+                <img id="dPhoto" src="" alt="Business Photo" style="width:100%; max-height:240px; object-fit:cover; display:block;">
             </div>
 
             <!-- AI Box -->

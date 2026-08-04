@@ -215,6 +215,13 @@ function initAuth() {
         localStorage.removeItem('lm_user');
         location.reload();
     };
+    const mobLog = document.getElementById('mobileLogoutBtn');
+    if(mobLog) {
+        mobLog.onclick = () => {
+            localStorage.removeItem('lm_user');
+            location.reload();
+        };
+    }
 }
 
 function showLoginError() {
@@ -224,6 +231,59 @@ function showLoginError() {
 }
 
 // ── NAVIGATION ──
+const routeMap = {
+    'scraper': '/leadScraper',
+    'leads': '/Database',
+    'pipeline': '/Pipeline',
+    'tasks': '/Schedule',
+    'chat': '/Conversations',
+    'admin': '/Admin'
+};
+
+const reverseRouteMap = {
+    '/leadScraper': 'scraper',
+    '/Database': 'leads',
+    '/Pipeline': 'pipeline',
+    '/Schedule': 'tasks',
+    '/Conversations': 'chat',
+    '/Admin': 'admin'
+};
+
+function activateTab(target) {
+    if(target === activeTab) return;
+    activeTab = target;
+    
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    const tabElement = document.querySelector(`.nav-tab[data-tab="${target}"]`);
+    if(tabElement) tabElement.classList.add('active');
+    
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    const panel = document.getElementById('panel-'+target);
+    if(panel) panel.classList.add('active');
+    
+    // Update breadcrumb
+    const titles = {
+        'scraper': 'Lead Scraper', 'leads': 'Database', 'pipeline': 'Pipeline Board',
+        'tasks': 'My Schedule', 'chat': 'Conversations', 'admin': 'Admin Portal'
+    };
+    document.getElementById('topTitle').innerText = titles[target] || 'Dashboard';
+    
+    // Action buttons visibility
+    const pdfBtn = document.getElementById('pdfBtn');
+    if(pdfBtn) pdfBtn.style.display = (target==='scraper' && typeof allLeads !== 'undefined' && allLeads.length) ? 'inline-flex' : 'none';
+    
+    // Custom logic per tab
+    if(target === 'leads') loadDbLeads();
+    if(target === 'pipeline') loadPipeline();
+    if(target === 'tasks') loadTasks();
+    if(target === 'admin' && typeof currentUser !== 'undefined' && currentUser?.role === 'admin') loadAdminStats();
+    if(target === 'chat') { 
+        const cb = document.getElementById('chatBadge'); 
+        if(cb) cb.style.display = 'none'; 
+        scrollToBottomChat(); 
+    }
+}
+
 function initNav() {
     document.querySelectorAll('.nav-tab').forEach(tab => {
         // Skip chitin tab — it opens in a new window via its own onclick
@@ -232,34 +292,35 @@ function initNav() {
             const target = tab.dataset.tab;
             if(target === activeTab) return;
             
-            document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-            tab.classList.add('active');
+            // Push state for URL
+            const newUrl = routeMap[target] || '/';
+            window.history.pushState({ tab: target }, '', newUrl);
             
-            document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-            document.getElementById('panel-'+target).classList.add('active');
-            
-            // Update breadcrumb
-            const titles = {
-                'scraper': 'Lead Scraper', 'leads': 'Database', 'pipeline': 'Pipeline Board',
-                'tasks': 'My Schedule', 'chat': 'Conversations', 'admin': 'Admin Portal'
-            };
-            document.getElementById('topTitle').innerText = titles[target];
-            
-            // Action buttons visibility
-            document.getElementById('pdfBtn').style.display = (target==='scraper' && allLeads.length) ? '' : 'none';
-            
-            activeTab = target;
-            
-            if(target === 'leads') loadDbLeads();
-            if(target === 'pipeline') loadPipeline();
-            if(target === 'tasks') loadTasks();
-            if(target === 'admin') loadAdminStats();
-            if(target === 'chat') {
-                document.getElementById('chatBadge').style.display = 'none';
-                scrollToBottomChat();
-            }
+            activateTab(target);
         };
     });
+    
+    // Handle browser back/forward buttons
+    window.addEventListener('popstate', (e) => {
+        if (e.state && e.state.tab) {
+            activateTab(e.state.tab);
+        } else {
+            const path = window.location.pathname;
+            const tabId = reverseRouteMap[path] || 'scraper';
+            activateTab(tabId);
+        }
+    });
+    
+    // Handle initial load
+    setTimeout(() => {
+        const initialPath = window.location.pathname;
+        let initialTabId = reverseRouteMap[initialPath];
+        if(!initialTabId && initialPath !== '/') initialTabId = 'scraper'; // unknown path fallback
+        
+        if (initialTabId && initialTabId !== activeTab) {
+            activateTab(initialTabId);
+        }
+    }, 100);
 }
 
 // ── WIZARD (SCRAPER) ──
@@ -324,87 +385,201 @@ function initWizard() {
 }
 
 // ── SCRAPER CORE ──
-function initScraper() {
-    document.getElementById('scrapeForm').onsubmit = (e) => {
-        e.preventDefault();
-        
+let currentEventSource = null;
+let currentScrapeParams = null;
+let savedScrapeLimit = 50;
+
+function restoreScraperState() {
+    const saved = localStorage.getItem('ishiva_scraped_leads');
+    if(saved) {
+        try {
+            const data = JSON.parse(saved);
+            if(data && data.length > 0) {
+                allLeads = data;
+                const tbody = document.getElementById('scraperBody');
+                tbody.innerHTML = '';
+                
+                document.querySelector('.wizard-card').style.display = 'none';
+                document.getElementById('scraperResultsArea').style.display = 'flex';
+                document.getElementById('pdfBtn').style.display = 'inline-flex';
+                
+                savedScrapeLimit = parseInt(localStorage.getItem('ishiva_scrape_limit')) || data.length;
+                document.getElementById('limTotal').innerText = savedScrapeLimit;
+                
+                const pct = Math.min((data.length / savedScrapeLimit) * 100, 100);
+                document.getElementById('progressBar').style.width = `${pct}%`;
+                document.getElementById('curCount').innerText = data.length;
+                
+                document.getElementById('sTotal').innerText = data.length;
+                document.getElementById('sHot').innerText = data.filter(l => l.priority && l.priority.includes('HIGH')).length;
+                document.getElementById('sTop').innerText = data.filter(l => parseFloat(l.rating) >= 4).length;
+                
+                data.forEach(l => renderScraperRow(l, tbody));
+                document.getElementById('progressStatus').innerText = 'Paused (Restored from session)';
+                
+                const paramsStr = localStorage.getItem('ishiva_scrape_params');
+                if(paramsStr) {
+                    currentScrapeParams = new URLSearchParams(paramsStr);
+                    document.getElementById('btnContinueScrape').style.display = 'block';
+                    document.getElementById('btnPauseScrape').style.display = 'none';
+                }
+            }
+        } catch(e){}
+    }
+}
+
+function startScrape(isContinue) {
+    const tbody = document.getElementById('scraperBody');
+    
+    if(!isContinue) {
         allLeads = [];
-        const tbody = document.getElementById('scraperBody');
         tbody.innerHTML = '';
-        
-        // Add skeleton rows
-        for(let i=0; i<5; i++) {
-            tbody.innerHTML += `<tr class="skeleton-row"><td><div class="skeleton-bar w-3-4"></div></td><td><div class="skeleton-bar w-1-2"></div></td><td><div class="skeleton-bar w-full"></div></td><td><div class="skeleton-bar w-1-2"></div></td><td><div class="skeleton-bar w-3-4"></div></td><td><div class="skeleton-bar w-1-2"></div></td><td><div class="skeleton-bar w-full"></div></td></tr>`;
-        }
-        
-        document.getElementById('searchBtn').disabled = true;
-        document.getElementById('searchBtn').innerHTML = '<svg class="icon spin"><use href="#i-refresh"/></svg> Extracting...';
-        
-        const heroWrapper = document.getElementById('scraperHero');
-        if(heroWrapper) heroWrapper.style.display = 'none';
-        
-        document.querySelector('.wizard-card').style.display = 'none';
-        document.getElementById('scraperResultsArea').style.display = 'flex';
-        document.getElementById('pdfBtn').style.display = 'inline-flex';
-        
         const loc = document.getElementById('location').value;
         const cat = document.getElementById('category').value;
         const country = document.getElementById('country').value;
         const limit = document.getElementById('limit').value;
         
-        document.getElementById('limTotal').innerText = limit;
-        document.getElementById('progressBar').style.width = '0%';
+        let leadType = 'all';
+        const typeEl = document.getElementById('leadType');
+        if (typeEl) leadType = typeEl.value;
         
-        const params = new URLSearchParams({ location: loc, category: cat, country: country, limit: limit, agent: currentUser.name });
+        savedScrapeLimit = limit;
+        localStorage.setItem('ishiva_scrape_limit', limit);
         
-        const es = new EventSource(`/api/scrape_stream?${params}`);
-        es.onmessage = (ev) => {
-            const data = JSON.parse(ev.data);
-            
-            if(data.done) {
-                es.close();
-                document.getElementById('searchBtn').disabled = false;
-                document.getElementById('progressStatus').innerText = 'Extraction Complete';
-                document.getElementById('progressStatus').style.color = 'var(--success)';
-                toast('success', `Successfully extracted ${allLeads.length} leads.`);
-                // Remove any remaining skeletons
-                tbody.querySelectorAll('.skeleton-row').forEach(r => r.remove());
-                return;
-            }
-            
-            if(data.error) {
-                es.close();
-                toast('error', `Error: ${data.error}`);
-                return;
-            }
-            
-            if(data.status) {
-                document.getElementById('progressStatus').innerText = data.status;
-                return;
-            }
-            
-            // First real data, remove skeletons
-            if(allLeads.length === 0) tbody.innerHTML = '';
-            
-            allLeads.push(data);
-            renderScraperRow(data, tbody);
-            
-            // Update Progress & Stats
-            const pct = Math.min((allLeads.length / limit) * 100, 100);
-            document.getElementById('progressBar').style.width = `${pct}%`;
-            document.getElementById('curCount').innerText = allLeads.length;
-            
-            document.getElementById('sTotal').innerText = allLeads.length;
-            document.getElementById('sHot').innerText = allLeads.filter(l => l.priority && l.priority.includes('HIGH')).length;
-            document.getElementById('sTop').innerText = allLeads.filter(l => parseFloat(l.rating) >= 4).length;
-        };
+        currentScrapeParams = new URLSearchParams({ location: loc, category: cat, country: country, limit: limit, agent: currentUser.name, leadType: leadType });
+        localStorage.setItem('ishiva_scrape_params', currentScrapeParams.toString());
         
-        es.onerror = () => {
-            es.close();
+        // Add skeletons
+        for(let i=0; i<5; i++) {
+            tbody.innerHTML += `<tr class="skeleton-row"><td><div class="skeleton-bar w-3-4"></div></td><td><div class="skeleton-bar w-1-2"></div></td><td><div class="skeleton-bar w-full"></div></td><td><div class="skeleton-bar w-1-2"></div></td><td><div class="skeleton-bar w-3-4"></div></td><td><div class="skeleton-bar w-1-2"></div></td><td><div class="skeleton-bar w-full"></div></td></tr>`;
+        }
+    } else {
+        currentScrapeParams.set('skip', allLeads.length);
+    }
+    
+    document.getElementById('searchBtn').disabled = true;
+    document.getElementById('searchBtn').innerHTML = '<svg class="icon spin"><use href="#i-refresh"/></svg> Extracting...';
+    
+    const heroWrapper = document.getElementById('scraperHero');
+    if(heroWrapper) heroWrapper.style.display = 'none';
+    
+    document.querySelector('.wizard-card').style.display = 'none';
+    document.getElementById('scraperResultsArea').style.display = 'flex';
+    document.getElementById('pdfBtn').style.display = 'inline-flex';
+    
+    document.getElementById('btnPauseScrape').style.display = 'block';
+    document.getElementById('btnContinueScrape').style.display = 'none';
+    
+    document.getElementById('limTotal').innerText = savedScrapeLimit;
+    const pct = Math.min((allLeads.length / savedScrapeLimit) * 100, 100);
+    document.getElementById('progressBar').style.width = `${pct}%`;
+    
+    currentEventSource = new EventSource(`/api/scrape_stream?${currentScrapeParams.toString()}`);
+    currentEventSource.onmessage = (ev) => {
+        const data = JSON.parse(ev.data);
+        
+        if(data.done) {
+            currentEventSource.close();
+            currentEventSource = null;
             document.getElementById('searchBtn').disabled = false;
-            toast('error', 'Connection lost to scraper engine.');
-        };
+            document.getElementById('searchBtn').innerHTML = '<svg class="icon"><use href="#i-zap"/></svg> Start Extraction';
+            document.getElementById('progressStatus').innerText = 'Extraction Complete';
+            document.getElementById('progressStatus').style.color = 'var(--success)';
+            toast('success', `Successfully extracted ${allLeads.length} leads.`);
+            tbody.querySelectorAll('.skeleton-row').forEach(r => r.remove());
+            document.getElementById('btnPauseScrape').style.display = 'none';
+            return;
+        }
+        
+        if(data.error) {
+            currentEventSource.close();
+            currentEventSource = null;
+            document.getElementById('btnPauseScrape').style.display = 'none';
+            document.getElementById('btnContinueScrape').style.display = 'block';
+            document.getElementById('searchBtn').disabled = false;
+            document.getElementById('searchBtn').innerHTML = '<svg class="icon"><use href="#i-zap"/></svg> Start Extraction';
+            toast('error', `Error: ${data.error}`);
+            return;
+        }
+        
+        if(data.status) {
+            document.getElementById('progressStatus').innerText = data.status;
+            return;
+        }
+        
+        if(!isContinue && allLeads.length === 0) tbody.innerHTML = '';
+        
+        allLeads.push(data);
+        renderScraperRow(data, tbody);
+        localStorage.setItem('ishiva_scraped_leads', JSON.stringify(allLeads));
+        
+        const currentPct = Math.min((allLeads.length / savedScrapeLimit) * 100, 100);
+        document.getElementById('progressBar').style.width = `${currentPct}%`;
+        document.getElementById('curCount').innerText = allLeads.length;
+        
+        document.getElementById('sTotal').innerText = allLeads.length;
+        document.getElementById('sHot').innerText = allLeads.filter(l => l.priority && l.priority.includes('HIGH')).length;
+        document.getElementById('sTop').innerText = allLeads.filter(l => parseFloat(l.rating) >= 4).length;
     };
+    
+    currentEventSource.onerror = () => {
+        currentEventSource.close();
+        currentEventSource = null;
+        document.getElementById('searchBtn').disabled = false;
+        document.getElementById('searchBtn').innerHTML = '<svg class="icon"><use href="#i-zap"/></svg> Start Extraction';
+        document.getElementById('btnPauseScrape').style.display = 'none';
+        document.getElementById('btnContinueScrape').style.display = 'block';
+        toast('error', 'Connection lost to scraper engine.');
+    };
+}
+
+function initScraper() {
+    restoreScraperState();
+
+    document.getElementById('scrapeForm').onsubmit = (e) => {
+        e.preventDefault();
+        startScrape(false);
+    };
+
+    const btnPause = document.getElementById('btnPauseScrape');
+    if(btnPause) btnPause.onclick = () => {
+        if(currentEventSource) {
+            currentEventSource.close();
+            currentEventSource = null;
+        }
+        document.getElementById('progressStatus').innerText = 'Paused';
+        document.getElementById('btnPauseScrape').style.display = 'none';
+        document.getElementById('btnContinueScrape').style.display = 'block';
+        document.getElementById('searchBtn').disabled = false;
+        document.getElementById('searchBtn').innerHTML = '<svg class="icon"><use href="#i-zap"/></svg> Start Extraction';
+    };
+
+    const btnContinue = document.getElementById('btnContinueScrape');
+    if(btnContinue) btnContinue.onclick = () => {
+        startScrape(true);
+    };
+
+    const btnClear = document.getElementById('btnClearScrape');
+    if(btnClear) btnClear.onclick = () => {
+        if(currentEventSource) {
+            currentEventSource.close();
+            currentEventSource = null;
+        }
+        allLeads = [];
+        localStorage.removeItem('ishiva_scraped_leads');
+        localStorage.removeItem('ishiva_scrape_params');
+        localStorage.removeItem('ishiva_scrape_limit');
+        
+        const tbody = document.getElementById('scraperBody');
+        tbody.innerHTML = '';
+        
+        document.getElementById('scraperResultsArea').style.display = 'none';
+        document.getElementById('pdfBtn').style.display = 'none';
+        document.querySelector('.wizard-card').style.display = 'block';
+        document.getElementById('searchBtn').disabled = false;
+        document.getElementById('searchBtn').innerHTML = '<svg class="icon"><use href="#i-zap"/></svg> Start Extraction';
+    };
+
     // Dynamic Location Dropdown
     const countryEl = document.getElementById('country');
     const locationEl = document.getElementById('location');
@@ -1266,6 +1441,16 @@ async function openDetail(id, isScraper) {
     document.getElementById('dPhone').innerText = l.phone;
     document.getElementById('dEmail').innerText = l.email || 'N/A';
     document.getElementById('dRate').innerText = `${l.rating !== 'N/A' ? l.rating : 'N/A'} ${l.reviews !== 'N/A' && l.reviews !== '0' ? '('+l.reviews+')' : ''}`;
+    document.getElementById('dAddress').innerText = l.full_address && l.full_address !== 'N/A' ? l.full_address : l.location;
+    
+    const photoContainer = document.getElementById('dPhotoContainer');
+    if(l.photo_url) {
+        document.getElementById('dPhoto').src = l.photo_url;
+        photoContainer.style.display = 'block';
+    } else {
+        photoContainer.style.display = 'none';
+        document.getElementById('dPhoto').src = '';
+    }
     
     const webHtml = l.website !== 'N/A' ? `<a href="${l.website}" target="_blank" class="td-link">${l.website}</a>` : 'No Website';
     document.getElementById('dWeb').innerHTML = webHtml;
