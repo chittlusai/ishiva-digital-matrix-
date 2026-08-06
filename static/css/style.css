@@ -425,6 +425,30 @@ tbody tr:hover { background: var(--bg3); }
     /* Grid & Toolbar */
     .grid-2 { grid-template-columns: 1fr; }
     .toolbar { flex-direction: column; align-items: stretch; gap: 0.75rem; }
+    
+    .mobile-menu-btn { display: flex !important; }
+    .mobile-sidebar-overlay {
+        position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0,0,0,0.5); z-index: 2000;
+        opacity: 0; pointer-events: none; transition: opacity 0.3s;
+    }
+    .mobile-sidebar-overlay.active {
+        opacity: 1; pointer-events: auto;
+    }
+    .mobile-sidebar-content {
+        position: absolute; top: 0; right: -280px; width: 280px; bottom: 0;
+        background: var(--bg); transition: right 0.3s;
+        display: flex; flex-direction: column;
+    }
+    .mobile-sidebar-overlay.active .mobile-sidebar-content {
+        right: 0;
+    }
+    .ms-header { padding: 1.5rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); }
+    .ms-header h3 { font-size: 1.1rem; margin: 0; }
+    
+    /* Admin Portal Mobile Overrides */
+    #panel-admin .card { height: 450px !important; max-height: none !important; }
+
     .toolbar .global-search { width: 100%; }
     
     /* Scraper Wizard */
