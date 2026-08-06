@@ -58,16 +58,24 @@ class GoogleMapsScraper:
         chrome_options.add_argument("--no-sandbox")
         chrome_options.add_argument("--disable-dev-shm-usage")
         chrome_options.add_argument("--disable-gpu")
+        chrome_options.add_argument("--disable-software-rasterizer")
+        chrome_options.add_argument("--disable-extensions")
+        chrome_options.add_argument("--blink-settings=imagesEnabled=false")
+        chrome_options.add_argument("--mute-audio")
         
         # If running in Linux/Docker (like Render), point to the native Chromium binary
+        service = None
+        from selenium.webdriver.chrome.service import Service
         if os.path.exists("/usr/bin/chromium"):
             chrome_options.binary_location = "/usr/bin/chromium"
+        if os.path.exists("/usr/bin/chromedriver"):
+            service = Service("/usr/bin/chromedriver")
 
         chrome_options.add_argument("--window-size=1920,1080")
         chrome_options.add_argument("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
         chrome_options.add_experimental_option("mobileEmulation", {"deviceMetrics": {"width": 1920, "height": 1080, "pixelRatio": 1.0}})
 
-        self.driver = webdriver.Chrome(options=chrome_options)
+        self.driver = webdriver.Chrome(options=chrome_options, service=service) if service else webdriver.Chrome(options=chrome_options)
         self.driver.maximize_window()
         self.driver.set_page_load_timeout(45)
 
