@@ -1,22 +1,35 @@
+# Use an official Python runtime as a parent image
 FROM python:3.10-slim
 
-# Install necessary tools and dependencies for Chrome
-RUN apt-get update && apt-get install -y wget unzip curl \
-    && wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
-    && apt-get install -y ./google-chrome-stable_current_amd64.deb \
-    && rm google-chrome-stable_current_amd64.deb \
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+ENV FLASK_ENV=production
+
+# Install Chrome and ChromeDriver dependencies
+RUN apt-get update && apt-get install -y \
+    wget \
+    gnupg \
+    unzip \
+    chromium \
+    chromium-driver \
     && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
 WORKDIR /app
 
-# Copy dependencies and install
-COPY requirements.txt .
+# Install Python dependencies
+COPY requirements.txt /app/
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy application code
-COPY . .
+# Copy the rest of the application code
+COPY . /app/
 
-# Run gunicorn with gevent for better streaming/EventSource support
-# and a longer timeout for the scraping process
-CMD ["gunicorn", "app:app", "--bind", "0.0.0.0:10000", "--timeout", "180", "--workers", "2", "--threads", "4"]
+# Ensure data directory exists for db.json
+RUN mkdir -p /app/data && echo "[]" > /app/data/db.json
+
+# Expose the port the app runs on (Render assigns this dynamically)
+EXPOSE 5001
+
+# Command to run the application using Gunicorn
+CMD gunicorn --bind 0.0.0.0:${PORT:-5001} wsgi:app --timeout 120

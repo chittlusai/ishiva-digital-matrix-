@@ -1,0 +1,11 @@
+venv/
+.venv/
+__pycache__/
+*.pyc
+.env
+credentials/
+.git/
+.gitignore
+*.csv
+.vscode/
+data/db.json
