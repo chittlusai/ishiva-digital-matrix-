@@ -25,8 +25,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the rest of the application code
 COPY . /app/
 
-# Ensure data directory exists for db.json
-RUN mkdir -p /app/data && echo "[]" > /app/data/db.json
+# Ensure data directory exists
+RUN mkdir -p /app/data
 
 # Expose the port the app runs on (Render assigns this dynamically)
 EXPOSE 5001
