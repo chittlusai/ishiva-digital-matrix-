@@ -5,6 +5,7 @@ FROM python:3.10-slim
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 ENV FLASK_ENV=production
+ENV MALLOC_ARENA_MAX=2
 
 # Install Chrome and ChromeDriver dependencies
 RUN apt-get update && apt-get install -y \
@@ -31,5 +32,5 @@ RUN mkdir -p /app/data
 # Expose the port the app runs on (Render assigns this dynamically)
 EXPOSE 5001
 
-# Command to run the application using Gunicorn
-CMD gunicorn --bind 0.0.0.0:${PORT:-5001} wsgi:app --timeout 120
+# Command to run the application using Gunicorn with strict memory limits
+CMD gunicorn --bind 0.0.0.0:${PORT:-5001} wsgi:app --timeout 120 --workers 1 --threads 2 --preload

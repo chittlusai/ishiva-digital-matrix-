@@ -63,6 +63,12 @@ class GoogleMapsScraper:
         chrome_options.add_argument("--blink-settings=imagesEnabled=false")
         chrome_options.add_argument("--mute-audio")
         
+        # Aggressive memory limits
+        chrome_options.add_argument("--disable-site-isolation-trials")
+        chrome_options.add_argument("--js-flags=--max-old-space-size=50")
+        chrome_options.add_argument("--disable-features=NetworkService,VizDisplayCompositor")
+        chrome_options.page_load_strategy = 'eager'
+        
         # If running in Linux/Docker (like Render), point to the native Chromium binary
         service = None
         from selenium.webdriver.chrome.service import Service
