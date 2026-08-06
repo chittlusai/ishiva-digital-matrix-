@@ -110,15 +110,16 @@
                 <svg class="icon"><use href="#i-search"/></svg>
                 <input type="text" id="globalSearch" placeholder="Search businesses or phones...">
             </div>
+            <button class="btn-icon admin-only" id="topAdminBtn" style="display:none; color:var(--purple);" title="Admin Portal">
+                <svg class="icon"><use href="#i-shield"/></svg>
+            </button>
             <button class="btn-icon" id="notificationBtn">
                 <svg class="icon"><use href="#i-bell"/></svg>
             </button>
             <button class="btn-icon mobile-logout-btn" id="mobileLogoutBtn" title="Sign Out" style="display: none; color: var(--danger);">
                 <svg class="icon"><use href="#i-logout"/></svg>
             </button>
-            <button class="btn-icon mobile-menu-btn" id="mobileMenuBtn" style="display: none;">
-                <svg class="icon"><use href="#i-menu"/></svg>
-            </button>
+            
             <button id="pdfBtn" class="btn btn-primary btn-sm" disabled style="display:none">
                 <svg class="icon icon-sm"><use href="#i-file"/></svg> Export PDF
             </button>
@@ -553,21 +554,7 @@
 </div>
 
 
-<!-- ═══ MOBILE SIDEBAR MENU ═══ -->
-<div class="mobile-sidebar-overlay" id="mobileSidebarOverlay">
-    <div class="mobile-sidebar-content">
-        <div class="ms-header">
-            <h3>Menu</h3>
-            <button class="btn-icon" id="closeMobileMenu"><svg class="icon"><use href="#i-x"/></svg></button>
-        </div>
-        <div class="ms-body" style="display:flex; flex-direction:column; padding: 1rem 0;">
-            <div class="nav-label admin-only" style="display:none">Management</div>
-            <button class="nav-tab admin-only mobile-admin-btn" data-tab="admin" style="display:none; justify-content:flex-start; padding: 1rem 1.5rem; width: 100%;">
-                <svg class="icon"><use href="#i-shield"/></svg> <span>Admin Portal</span>
-            </button>
-        </div>
-    </div>
-</div>
+
 
 <!-- ═══ EXPORT STUDIO MODAL ═══ -->
 <div class="modal-overlay" id="exportStudioModal">

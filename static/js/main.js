@@ -1844,3 +1844,25 @@ function toast(type, msg) {
         setTimeout(() => t.remove(), 300);
     }, 4000);
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const togglePassBtn = document.getElementById('togglePassBtn');
+    if (togglePassBtn) {
+        togglePassBtn.addEventListener('click', () => {
+            const passInput = document.getElementById('authPass');
+            const eyeIcon = document.getElementById('eyeIcon');
+            if (passInput.type === 'password') {
+                passInput.type = 'text';
+                eyeIcon.innerHTML = '<use href="#i-eye-off"/>';
+            } else {
+                passInput.type = 'password';
+                eyeIcon.innerHTML = '<use href="#i-eye"/>';
+            }
+        });
+    }
+
+    const topAdminBtn = document.getElementById('topAdminBtn');
+    if (topAdminBtn) {
+        topAdminBtn.addEventListener('click', () => switchTab('admin'));
+    }
+});
